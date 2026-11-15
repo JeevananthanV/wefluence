@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Model Filter</title>
+  <link rel="stylesheet" href="./assets/style/modeling.css">
+  <style>
+    #loading {
+  display: none;
+  font-weight: 500;
+  color: #555;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 1rem;
+  position: relative;
+}
+
+#loading::after {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 10px;
+  border: 2px solid #999;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#results-count {
+  margin: 20px auto;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #333;
+  background: #f8f9fa;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  display: inline-block;
+}
+
+  </style>
+</head>
+<body>
+
+  <form id="filter-form">
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+       <label for="state">State:</label>
+
+<select id="state" name="state">
+  <option value="">Select State</option>
+
+  <optgroup label="South India">
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Puducherry">Puducherry</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+  </optgroup>
+
+  <optgroup label="North India">
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+  </optgroup>
+</select>
+
+    <label for="city">City:</label>
+    <select id="city" name="city" disabled>
+      <option value="">Select City</option>
+    </select>
+  </form>
+
+  <div id="loading">Loading...</div>
+  <div id="results-count"></div>
+
+  <div id="results-section">
+    <div id="modal-results" class="grid-container"></div>
+  </div>
+
+  <div id="pagination">
+    <button id="prevButton">Previous</button>
+    <button id="nextButton">Next</button>
+  </div>
+
+  <script src="influencer_filter.js"></script>
+</body>
+</html>

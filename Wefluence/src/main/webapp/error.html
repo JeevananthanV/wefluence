@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error - Something Went Wrong</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+        :root {
+            --txtb: rgb(0, 0, 0);
+            --txtw: rgb(255, 255, 255);
+            --primary-color: #191919;
+            --back-color: #333333;
+            --second-back-color: #666666;
+            --mainheading: #ffd700;
+            --subheadsimg: white;
+            --paracolor: rgb(220, 220, 220);
+            --mainheadfont: "Montserrat", serif;
+            --subheadfont: "Montserrat", serif;
+            --parafont: "Montserrat", serif;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--parafont);
+            color: var(--txtw);
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-color);
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1000px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--back-color);
+            text-align: center;
+            padding: 40px;
+            flex-direction: column;
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            color: var(--mainheading);
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            font-size: 2rem;
+            color: var(--mainheading);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .error-description {
+            font-size: 1.2rem;
+            color: var(--paracolor);
+            margin-bottom: 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: black;
+            background-color: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-back:hover {
+            background-color: var(--mainheading);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 30px;
+            }
+            .error-message {
+                font-size: 1.8rem;
+            }
+            .error-description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <i class="fas fa-exclamation-triangle error-icon"></i>
+    <h2 class="error-message">Oops! Something Went Wrong</h2>
+    <p class="error-description">We couldn't process your request. Please try again later.</p>
+    <button class="btn-back" onclick="goBack()"><i class="fas fa-arrow-left"></i> Go Back</button>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

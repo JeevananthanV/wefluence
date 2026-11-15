@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Influencer Form Sign-Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Influencer Form Sign-Up</h2>
+      </div>
+      <form action="InfluencerSignup" method="post">
+        <div class="form-group">
+          <label for="full-name">Full Name:</label>
+          <input
+            type="text"
+            id="full-name"
+            name="fullName"
+            class="form-input"
+            required
+            placeholder="Enter your full name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="contact-number">Contact Number:</label>
+          <input
+            type="tel"
+            id="contact-number"
+            name="contactNumber"
+            class="form-input"
+            required
+            placeholder="Enter phone number"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="emailAddress"
+            class="form-input"
+            required
+            placeholder="Enter email address"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            class="form-input"
+            required
+            placeholder="Enter your location"
+          />
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+
+    <div class="why-choose-us">
+      <h3>Why Choose Us?</h3>
+      <div class="points">
+        <div class="point">
+          <i class="bx bx-trending-up"></i>
+          <span><strong>Boost Your Presence:</strong> Increase your audience reach and engagement.</span>
+        </div>
+        <div class="point">
+  <i class="bx bx-message-rounded"></i>
+  <span><strong>Audience Engagement:</strong> Build a strong follower base through targeted campaigns.</span>
+</div>
+        <div class="point">
+          <i class="bx bx-dollar-circle"></i>
+          <span><strong>Monetize Content:</strong> Unlock new revenue streams with your influence.</span>
+        </div>
+        <div class="point">
+          <i class="bx bx-award"></i>
+          <span><strong>Recognition Opportunities:</strong> Be part of prestigious events and features.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

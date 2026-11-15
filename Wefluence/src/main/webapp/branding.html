@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style/branding.css">
+    <title>Brand</title>
+</head>
+<body>
+    <header>
+        <div class="main-header">
+            <div class="sub-header">
+                <div class="sub-head">
+                    <img src="./assets/img/MW letter logo design.png" alt="">
+                </div>
+                <div class="sub-head">
+                    <nav class="nav-bar">
+                        <ul id="sidebar">
+                            <li onclick=hideSidebar()><a href="#"><i class='bx bx-x' ></i></a></li>
+                            <li onclick="location.href='index.html'">HOME</li>
+                            <li onclick="location.href='AboutUs.html'">ABOUT US</li>
+                            <li><a href="#"></a>EXPLORE <i class='bx bx-chevron-down'></i>
+                                <ul class="dropdown">
+                                    <li onclick="location.href='branding.html'">Iam Brand</li>
+                                    <li onclick="location.href='modeling.html'">Iam model</li>
+                                    <li onclick="location.href='influencing.html'">Iam Influencer</li>
+                                </ul>
+                            </li>
+                            <li onclick="location.href='contactus.html'"    >CONTACT US</li>
+                        </ul>
+                        <ul class="ul-navbar">
+                            <li  class="hideOnMobile"onclick="location.href='index.html'">HOME</li>
+                            <li class="hideOnMobile" onclick="location.href='AboutUs.html'">ABOUT US</li>
+                            <li class="hideOnMobile"><a href="#"></a>EXPLORE <i class='bx bx-chevron-down'></i>
+                                <ul class="dropdown">
+                                    <li onclick="location.href='branding.html'">Iam Brand
+                                        <div class="brand-menu">
+                                            <ul>
+                                                <li><a href="#">Campaign Management</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li onclick="location.href='modeling.html'">Iam model
+                                        <div class="brand-menu">
+                                            <ul>
+                                                <li><a href="#">Campaign Management</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li onclick="location.href='influencing.html'">Iam Influencer
+                                        <div class="brand-menu">
+                                            <ul>
+                                                <li><a href="#">Campaign Management</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li  class="hideOnMobile"onclick="location.href='contactus.html'"    >CONTACT US</li>
+                            <li class="menu-btn" onclick=showSidebar()><a href="#"><i class='bx bx-menu'></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="main-conthead">
+            <div class="cont-heard">
+                <h1>
+                    Authentic Voices for Your Story
+                </h1>
+                <p>
+                    At Wefluence, we help brands find their perfect storytellers. Whether you're looking to reach niche audiences or scale your campaigns with authenticity, our curated pool of verified creators ensures that your message resonates with the right people.
+                </p>
+            </div>
+            <div class="slider">
+                <button class="prev" onclick="prevSlide()">&#10094</button>
+                <div class="slides">
+                    <img class="slide" id="page1-image1" src="default1.jpg" alt="Image 1">
+                 
+                    <img class="slide" id="page1-image2" src="default2.jpg" alt="Image 2">
+                
+                    <img class="slide" id="page1-image3" src="default3.jpg" alt="Image 3">
+                </div>
+
+                <button class="next" onclick="nextSlide()" >&#10095</button>
+            </div>
+        </div>
+            <div class="sub-headerbtn">
+                
+                <button onclick="location.href='Brandsignup.html'">Get started</button>
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <div class="main-choosebrand">
+            <div class="sub-choosebrand" id="sub-choosemodelpic">
+                <img src="./assets/img/modelfemale1.jpeg" alt="">
+            </div>
+            <div class="sub-choosebrand">
+                <div class="sub-choosecont">
+                    <div class="sub-brandcontent" id="sub-brandcontent-heading">
+                        <h2>
+                            Why Choose Weofluence ?
+                        </h2>
+                        <p>
+                            <ul class="whychooseweo">
+                                <li>Precision-targeted marketing with verified creators.</li>
+                                <li>Cost-effective solutions for campaigns of all sizes.</li>
+                                <li> Transparency in every step of the collaboration process.</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="sub-choosecont">
+                    <div class="sub-brandcontent">
+                        <div class="imgs-icon">
+                            <img src="./assets/img/awards.png" alt="">
+                        </div>
+                        <div>
+                            <h4>Curated Talent Pool: 
+                            </h4>
+                            <p>
+                                Access influencers and models verified for their engagement, quality, and alignment with your brand values.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="sub-choosecont">
+                    <div class="sub-brandcontent">
+                        <div class="imgs-icon">
+                            <img src="./assets/img/agreement.png" alt="">
+                        </div>
+                        <div >
+                            <h4>
+                                Advanced Campaign Tools:                             </h4>
+                            <p>
+                                Simplify your campaign management with end-to-end solutions for content approvals, performance tracking, and ROI measurement.    
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="sub-choosecont">
+                    <div class="sub-brandcontent">
+                        <div class="imgs-icon">
+                            <img src="./assets/img/announcement.png" alt="">
+                        </div>
+                        <div>
+                            <h4>
+                                Great brand campaigns
+    
+                            </h4>
+                            <p>
+                                We create powerful marketing campaigns with a strong strategy and exceptional delivery.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="brandclints-heading">
+            <h2>Our Clients !</h2>
+        </div>           
+        <div class="main-slide">
+            <div class="sub-slide">
+                <img src="./assets/img/slidebrandimage1.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage2.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage3.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage4.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage5.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage6.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage7.jpeg" alt="">
+            </div>
+        </div>
+
+        <!-- search items -->
+        <div class="cta">
+            <h2>Browse profiles and find the perfect talent for your campaigns.</h2>
+            <a href="#contact" class="btn" onclick="location.href='Brand-Indepth_Form.html'">Join Now</a>
+        </div> 
+  <section>
+    <div class="header-pointsearch">
+        <h2>Discover Your Perfect Storytellers</h2>
+        <p>
+            Your next campaign deserves more than just visibility—it deserves impact. Wefluence offers access to a vast database of talented models and influencers across Tamil Nadu, ready to bring your brand's story to life. From niche creators to industry professionals, we ensure authentic connections that resonate with your audience.
+        </p>
+    </div>
+     <form id="filter-form">
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+       <label for="state">State:</label>
+
+<select id="state" name="state">
+  <option value="">Select State</option>
+
+  <optgroup label="South India">
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Puducherry">Puducherry</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+  </optgroup>
+
+  <optgroup label="North India">
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+  </optgroup>
+</select>
+
+    <label for="city">City:</label>
+    <select id="city" name="city" disabled>
+      <option value="">Select City</option>
+    </select>
+  </form>
+
+  <div id="loading">Loading...</div>
+  <div id="results-count"></div>
+
+  <div id="results-section">
+    <div id="modal-results" class="grid-container"></div>
+  </div>
+
+  <div id="pagination">
+    <button id="prevButton">Previous</button>
+    <button id="nextButton">Next</button>
+  </div>
+
+  
+  <div class="container">
+    <!-- Call to Action Section -->
+     <div class="cta-main">
+         <div class="cta-section">
+             <div class="cta-card">
+                 <img src="./assets/img/youtube.svg" alt="Brand Icon">
+                 <h2>BRAND</h2>
+                 <p>Find top brands and create impactful collaborations to grow your influence.</p>
+                 <button onclick="location.href='branding.html'"><a href="branding.html">I'm a Brand</a></button>
+             </div>
+             <div class="cta-card">
+                 <img src="./assets/img/youtube.svg" alt="Influencer Icon">
+                 <h2>INFLUENCERS</h2>
+                 <p>Find top brands and create impactful collaborations to grow your influence.</p>
+                 <button onclick="location.href='influencing.html'"><a href="/influencing.html">I'm an Influencer</a></button>
+             </div>
+             <div class="cta-card">
+                 <img src="./assets/img/youtube.svg" alt="Model Icon">
+                 <h2>MODELS</h2>
+                 <p>Find top brands and create impactful collaborations to grow your influence.</p>
+                 <button onclick="location.href='modeling.html'"><a href="/modeling.html">I'm a Model</a></button>
+             </div>
+        </div>
+        <div class="cta-content">
+            <h1>Let's Influence Together!</h1>
+            <p>
+                Whether you're a brand looking to connect with influencers or an influencer seeking collaboration, 
+                get in touch with us, the best Influencer Marketing agency today.
+            </p>
+            <div class="cta-contact">
+                <div>
+                    <p>Call Us</p>
+                    <h3>+918826483939</h3>
+                </div>
+                <div>
+                    <p>Email Us</p>
+                    <h3>hello@weofluence.com</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="out-brandplacement">
+    <div class="head-brandplacement">
+        <h2>
+            Why Brand Placement ?
+        </h2>
+        <div class="maincont-brandplacement-card">
+            <div class="subcont-brandplacement-card">
+                <div class="subcont-brandplacement-icon">
+                    <i class='bx bx-credit-card'></i>
+                </div>
+                <h4>Curated Talent Pool</h4>
+                <p>Access influencers and models verified for their engagement, quality, and alignment with your brand values</p>
+            </div>
+            <div class="subcont-brandplacement-card">
+                <div class="subcont-brandplacement-icon">
+                    <i class='bx bx-brain' ></i>
+                </div>
+                <h4>Advanced Campaign Tools</h4>
+                <p>Simplify your campaign management with end-to-end solutions for content approvals, performance tracking, and ROI measurement.</p>
+            </div>
+            <div class="subcont-brandplacement-card">
+                <div class="subcont-brandplacement-icon">
+                    <i class='bx bx-package' ></i>
+                </div>
+                <h4>Data-Driven Insights </h4>
+                <p>
+                    Monitor engagement metrics, audience demographics, and campaign success in real time to maximize your impact.
+                </p>
+            </div>
+            <div class="subcont-brandplacement-card">
+                <div class="subcont-brandplacement-icon">
+                    <i class='bx bx-calculator' ></i>
+                </div>
+                <h4>Risk-Free Collaborations</h4>
+                <p>
+                    Our platform ensures secure payments, fraud prevention, and content rights management for peace of mind.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cta">
+    <h2>Let Wefluence be your partner in building impactful connections.</h2>
+    <a onclick="location.href='Brandsignup.html'" class="btn"> Enquire Today</a>
+</div>
+<div class="faq-section">
+    <h1>Frequently Asked Questions</h1>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>How do brands sign up and get started on Wefluence?</h3>
+                <i class="faq-icon fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Brands can sign up on Wefluence by creating a business profile, specifying their target audience, and setting campaign objectives. Once registered, they can browse influencer profiles and initiate collaborations.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>How does Wefluence handle payments for brand collaborations?</h3>
+                <i class="faq-icon fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Payments are processed securely through Wefluence's platform. Brands can choose flexible payment options, including milestone-based payouts, to ensure smooth transactions and accountability for both parties.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>How does Wefluence ensure influencer authenticity?</h3>
+                <i class="faq-icon fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Wefluence verifies influencer profiles, analyzes engagement metrics, and provides real-time data to help brands make informed collaboration decisions.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Can brands track campaign performance?</h3>
+                <i class="faq-icon fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, Wefluence provides analytics and performance reports, including reach, engagement, and conversion rates, to help brands measure campaign success.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>What types of influencer collaborations can brands initiate?</h3>
+                <i class="faq-icon fas fa-plus"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Brands can launch sponsored posts, product reviews, affiliate partnerships, ambassador programs, and influencer-led marketing campaigns.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+    <footer class="footer">
+        <div class="container-footer ">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About WeFluence</a></li>
+                        <li><a href="#">Our Vission & Mission</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resource</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Guides for Brand</a></li>
+                        <li><a href="#">Guides for Influencers</a></li>
+                        <li><a href="#">Community Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Report an Issue</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Partnership Queries</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us </h4>
+                    <ul>
+                        <li><a href="#">Phone: +91 XXX-XXX-XXXX</a></li>
+                        <li><a href="#">Email: contact@wefluence.com</a></li>
+                        <li><a href="#">Location: WeFluence Pvt. Ltd., South India.</a></li>
+                        <li><a href="#">Operating Hours: Mon - Fri, 9 AM to 6 PM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                        <a href="#"><i class='bx bxl-twitter' ></i></a>
+                        <a href="#"><i class='bx bxl-instagram' ></i></a>
+                        <a href="#"><i class='bx bxl-linkedin-square' ></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+        <script src="brand_filter.js"></script>
+    
+    <script>
+        var copy= document.querySelector(".sub-slide").cloneNode(true);
+        document.querySelector(".main-slide").appendChild(copy);
+       
+    </script>
+    <script>
+        function showSidebar(){
+            const sidebar =document.querySelector('#sidebar')
+            sidebar.style.display='flex'
+        }
+        function hideSidebar(){
+            const sidebar =document.querySelector('#sidebar')
+            sidebar.style.display='none'
+        }
+        // JavaScript to toggle FAQ answer visibility and icon change
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+        // Close any open FAQ item
+        faqItems.forEach(faq => {
+            if (faq !== item) {
+                faq.classList.remove('open');
+                const icon = faq.querySelector('.faq-icon');
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        });
+
+        // Toggle the selected FAQ item
+        item.classList.toggle('open');
+        const icon = item.querySelector('.faq-icon');
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+    });
+});
+
+    </script>
+    <script>
+        const slides = document.querySelectorAll(".slides img");
+        let slideIndex =0;
+        let intervalId = null;
+        document.addEventListener("DOMContentLoaded",initializeSlider);
+  
+        function initializeSlider(){
+          if(slides.length > 0){
+              slides[slideIndex].classList.add("displaySlide");
+              intervalId=setInterval(nextSlide,5000);
+          }
+  
+        }
+        function showSlide(index){
+  
+          if(index >= slides.length){
+              slideIndex = 0;
+          }else if(index < 0){
+              slideIndex=slides.length -1;
+          }
+          slides.forEach(slide =>{slide.classList.remove("displaySlide");});
+          slides[slideIndex].classList.add("displaySlide");
+        }
+        function prevSlide(){
+          clearInterval(intervalId);
+          slideIndex--;
+          showSlide(slideIndex);
+        }
+        function nextSlide(){
+          slideIndex++;
+          showSlide(slideIndex);
+        }
+      </script>
+      <script>
+        window.addEventListener("load", function() {
+            const image1 = localStorage.getItem("page1-image1");
+            const image2 = localStorage.getItem("page1-image2");
+            const image3 = localStorage.getItem("page1-image3");
+          
+            if (image1) {
+              document.getElementById("page1-image1").src = image1;
+            }
+            if (image2) {
+              document.getElementById("page1-image2").src = image2;
+            }
+            if (image3) {
+              document.getElementById("page1-image3").src = image3;
+            }
+          });
+          
+      </script>
+</body>
+</html>

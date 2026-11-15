@@ -1,0 +1,36 @@
+{"brands": [
+    {
+        "special_requirements": "bmbnjk",
+        "industry_category": "Fashion",
+        "is_active": false,
+        "contact_person": "mckdl",
+        "brand_name": "jk",
+        "social_media_platforms": "LinkedIn,Other",
+        "social_media_other": "",
+        "brand_id": "40",
+        "email_address": "mvmmvvm@kdd.com",
+        "website_url": "https://chatgpt.com/",
+        "custom_industry": " m",
+        "budget_range": "10k-20k",
+        "phone_number": "6513221121",
+        "designation": "mmmmvmv",
+        "company_size": "201-500"
+    },
+    {
+        "special_requirements": "",
+        "industry_category": "Tech",
+        "is_active": true,
+        "contact_person": "3245454111  ",
+        "brand_name": "jeeva",
+        "social_media_platforms": "YouTube",
+        "social_media_other": "",
+        "brand_id": "39",
+        "email_address": "jhj@as.com",
+        "website_url": "http://localhost:8084/Wefluencesignup/dashboard.jsp",
+        "custom_industry": "null",
+        "budget_range": "10k-20k",
+        "phone_number": "354434",
+        "designation": "xbchxmcbn",
+        "company_size": "51-200"
+    }
+]}

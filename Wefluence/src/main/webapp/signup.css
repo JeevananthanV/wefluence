@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+      --txtb: rgb(0, 0, 0);
+      --txtw: rgb(255, 255, 255);
+      --primary-color: #191919;
+      --back-color: #333333;
+      --second-back-color: #666666;
+      --mainheading: #ffd700;
+      --subheadsimg: white;
+      --paracolor: rgb(220, 220, 220);
+      --mainheadfont: "Montserrat", serif;
+      --subheadfont: "Montserrat", serif;
+      --parafont: "Montserrat", serif;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--parafont);
+      color: var(--txtw);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--primary-color);
+    }
+    .container {
+      display: flex;
+      width: 80%;
+      max-width: 1200px;
+      /* border: 2px solid var(--mainheading); Single border around the entire section */
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container {
+      width: 50%;
+      background-color: var(--back-color);
+      padding: 40px;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-header h2 {
+      font-size: 28px;
+      color: var(--mainheading);
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--subheadsimg);
+    }
+
+    .form-input {
+      margin: 16px 0;
+      border: none;
+      font-size: 18px;
+      outline: none;
+      width: 100%;
+      border-bottom: 1px solid var(--white);
+      background-color: transparent;
+      color: var(--txtw);
+    }
+
+    .form-input::placeholder {
+      color: var(--second-back-color);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+      background-color: var(--white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--mainheading);
+    }
+
+    .why-choose-us {
+      width: 50%;
+      padding: 40px;
+      background-color: var(--second-back-color);
+    }
+
+    .why-choose-us h3 {
+      font-size: 24px;
+      color: var(--mainheading);
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .points {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  font-size: 18px;
+  color: var(--paracolor);
+}
+
+.point i {
+  font-size: 40px;
+  color: var(--mainheading);
+}

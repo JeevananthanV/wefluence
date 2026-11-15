@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+ 
+    <display-name>Wefluence</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+    </welcome-file-list>
+
+    <!-- Database Configuration -->
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>jdbcurl</param-name>
+        <param-value>jdbc:mysql://localhost:3306/wefluence</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>Admin@123</param-value>
+    </context-param>
+
+    <!-- Servlet Definition (Optional if using @WebServlet) -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.dev.login.LoginServlet</servlet-class>
+     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Modelview</servlet-name>
+        <servlet-class>com.dev.model.Modelview</servlet-class>
+     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Modelview</servlet-name>
+        <url-pattern>/Modelview</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Influencerview</servlet-name>
+        <servlet-class>com.dev.influencer.Influencerview</servlet-class>
+     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Influencerview</servlet-name>
+        <url-pattern>/Influencerview</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Brandview</servlet-name>
+        <servlet-class>com.dev.brand.Brandview</servlet-class>
+     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Brandview</servlet-name>
+        <url-pattern>/Brandview</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet for BrandEnquiry -->
+    <servlet>
+        <servlet-name>BrandEnquiry</servlet-name>
+        <servlet-class>com.dev.enquiremanagement.BrandEnquiry</servlet-class>
+     </servlet>
+    <servlet-mapping>
+        <servlet-name>BrandEnquiry</servlet-name>
+        <url-pattern>/BrandEnquiry</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet for ModelEnquiry -->
+    <servlet>
+        <servlet-name>ModelEnquiry</servlet-name>
+        <servlet-class>com.dev.enquiremanagement.ModelEnquiry</servlet-class>
+     </servlet>
+    <servlet-mapping>
+        <servlet-name>ModelEnquiry</servlet-name>
+        <url-pattern>/ModelEnquiry</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet for InfluencerEnquiry -->
+    <servlet>
+        <servlet-name>InfluencerEnquiry</servlet-name>
+        <servlet-class>com.dev.enquiremanagement.InfluencerEnquiry</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InfluencerEnquiry</servlet-name>
+        <url-pattern>/InfluencerEnquiry</url-pattern>
+    </servlet-mapping>
+         
+    
+</web-app>

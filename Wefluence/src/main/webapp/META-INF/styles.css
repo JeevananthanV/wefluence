@@ -1,0 +1,102 @@
+@charset "ISO-8859-1";
+  	body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #111;
+    color: white;
+    position: fixed;
+    transition: width 0.3s ease-in-out;
+}
+
+.sidebar-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background: #222;
+}
+
+.toggle-btn {
+    cursor: pointer;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.menu li i {
+    margin-right: 10px;
+}
+
+.menu li:hover, .menu .active {
+    background: #333;
+}
+
+.has-dropdown > a {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-icon {
+    transition: transform 0.3s;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.has-dropdown .dropdown {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+    background: #222;
+    position: absolute;
+    width: 200px;
+    left: 100%;
+    top: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.has-dropdown:hover .dropdown {
+    display: block;
+    opacity: 1;
+}
+
+.dashboard-content {
+    margin-left: 260px;
+    padding: 20px;
+}
+
+.logout {
+    position: absolute;
+    bottom: 10px;
+    width: 88%;
+    overflow:hidden;
+    text-align: center;
+    padding: 10px;
+}
+ 	

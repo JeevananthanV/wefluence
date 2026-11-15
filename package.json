@@ -1,0 +1,21 @@
+{
+  "name": "wefluence",
+  "version": "1.0.0",
+  "description": "WeFluence - Connect Brands & Creators with Privacy. A brand-influencer booking platform that streamlines collaboration between creators and marketing teams.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "wefluence",
+    "influencer-marketing",
+    "brand-collaboration",
+    "creator-economy",
+    "react",
+    "spa",
+    "booking-platform"
+  ],
+  "author": "Jeevananthan V <jeevananthanjeeva170902@gmail.com>",
+  "license": "MIT"
+}

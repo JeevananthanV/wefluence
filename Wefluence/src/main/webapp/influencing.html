@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/style/influence.css" />
+    <link rel="stylesheet" href="./assets/style/branding.css" />
+        <title>Influencer</title>
+  </head>
+  <body>
+    <header>
+      <div class="main-header">
+        <div class="sub-header">
+          <div class="sub-head">
+              <img src="./assets/img/MW letter logo design.png" alt="">
+          </div>
+          <div class="sub-head">
+              <nav class="nav-bar">
+                  <ul id="sidebar">
+                      <li onclick=hideSidebar()><a href="#"><i class='bx bx-x' ></i></a></li>
+                      <li onclick="location.href='index.html'">HOME</li>
+                      <li onclick="location.href='AboutUs.html'">ABOUT US</li>
+                      <li><a href="#"></a>EXPLORE <i class='bx bx-chevron-down'></i>
+                          <ul class="dropdown">
+                              <li onclick="location.href='branding.html'">Iam Brand</li>
+                              <li onclick="location.href='modeling.html'">Iam model</li>
+                              <li onclick="location.href='influencing.html'">Iam Influencer</li>
+                          </ul>
+                      </li>
+                      <li onclick="location.href='contactus.html'"    >CONTACT US</li>
+                  </ul>
+                  <ul class="ul-navbar">
+                      <li  class="hideOnMobile"onclick="location.href='index.html'">HOME</li>
+                      <li class="hideOnMobile" onclick="location.href='AboutUs.html'">ABOUT US</li>
+                      <li class="hideOnMobile"><a href="#"></a>EXPLORE <i class='bx bx-chevron-down'></i>
+                        <ul class="dropdown">
+                          <li onclick="location.href='branding.html'">Iam Brand
+                              <div class="brand-menu">
+                                  <ul>
+                                      <li><a href="#">Campaign Management</a></li>
+                                      <li><a href="#">Influencer Discovery</a></li>
+                                      <li><a href="#">Influencer Discovery</a></li>
+                                  </ul>
+                              </div>
+                          </li>
+                          <li onclick="location.href='modeling.html'">Iam model
+                              <div class="brand-menu">
+                                  <ul>
+                                      <li><a href="#">Campaign Management</a></li>
+                                      <li><a href="#">Influencer Discovery</a></li>
+                                      <li><a href="#">Influencer Discovery</a></li>
+                                  </ul>
+                              </div>
+                          </li>
+                          <li onclick="location.href='influencing.html'">Iam Influencer
+                              <div class="brand-menu">
+                                  <ul>
+                                      <li><a href="#">Campaign Management</a></li>
+                                      <li><a href="#">Influencer Discovery</a></li>
+                                      <li><a href="#">Influencer Discovery</a></li>
+                                  </ul>
+                              </div>
+                          </li>
+                      </ul>
+                      </li>
+                      <li  class="hideOnMobile"onclick="location.href='contactus.html'"    >CONTACT US</li>
+                      <li class="menu-btn" onclick=showSidebar()><a href="#"><i class='bx bx-menu'></i></a></li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+      <div class="main-conthead">
+        <div class="cont-heard">
+          <h1>Turn Your Influence <span>into Impact.</span></h1>
+          <p>
+            Wefluence bridges the gap between influencers and brands across
+            Tamil Nadu. With thousands of verified profiles and brands actively
+            searching for authentic voices, this is your chance to collaborate,
+            monetize, and grow.
+          </p>
+        </div>
+        <div class="slider">
+          <button class="prev" onclick="prevSlide()">&#10094</button>
+          <div class="slides">
+              <img class="slide" id="page3-image1" src="default1.jpg" alt="Image 1">
+           
+              <img class="slide" id="page3-image2" src="default2.jpg" alt="Image 2">
+          
+              <img class="slide" id="page3-image3" src="default3.jpg" alt="Image 3">
+          </div>
+
+          <button class="next" onclick="nextSlide()" >&#10095</button>
+      </div>
+
+
+      </div>
+        <div class="sub-headerbtn">
+          <button onclick="location.href='Influencersignup.html'">Get started</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- about -->
+      <div class="full-about">
+        <div
+          class="whole-about"
+          data-aos="zoom-in-down"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+        >
+          <div class="im-about">
+            <img src="assets/img/aboutimg-1.avif" alt="no img" />
+          </div>
+          <div class="cont-about">
+            <div class="cont-about3">
+              <h1>Why Wefluence?</h1>
+              <p style="margin-bottom: 10px;">Transform your creativity into a sustainable career with Wefluence. As the go-to platform for influencers of all sizes, we provide the tools and resources you need to grow your audience, collaborate with brands, and amplify your impact.</p>
+              <div class="cont-about-adjust">
+                <div class="cont-ponit-1">
+                <img src="/assets/img/achivement.svg" alt="">
+                <div class="">
+                <h4>cont-ponit
+                  Advanced analytics to optimize your content performance.
+                </h4>
+                <p>Leverage advanced analytics to track engagement, measure performance, gain insights, and optimize your content strategy for improved audience growth.</p>
+              </div>
+              </div>
+
+              <div class="cont-ponit-1">
+                <img src="/assets/img/handshake.svg" alt="">
+                <div class="cont-ponit">
+                <h4>
+                  Secure and transparent payment processing.
+                </h4>
+                <p>Experience secure and transparent payment processing with advanced encryption, ensuring seamless transactions, fraud prevention, and peace of mind for users.</p>
+              </div>
+              </div>
+
+                <div class="cont-ponit-1">
+                <img src="/assets/img/load.svg" alt="">
+                <div class="cont-ponit">
+                <h4>
+                  A supportive ecosystem to help you thrive as a creator.
+                </h4>
+                <p>Join a supportive ecosystem that provides tools, resources, collaboration opportunities, and expert guidance to help you thrive as a creator.</p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="full-types">
+        <div class="head-types">
+          <h1>Types of influencers</h1>
+        </div>
+
+        <div
+          class="whole-types"
+          data-aos="zoom-in-down"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+        >
+          <div class="cont-types">
+            <div class="small-types">
+              <h2>Nano- 10k to 50k followers</h2>
+              <p>
+                Nano-influencers are normal social media users with a following
+                of about 10,000 to 50,000. They are influencers at the initial
+                stage and are still learning social media influence by working
+                hard with their content.
+              </p>
+            </div>
+            <div class="small-types">
+              <h2>Micro- 50k to 100k followers</h2>
+              <p>
+                A micro-influencer is someone who has a higher social media
+                following than that of an average person but less than that of a
+                celebrity. They use their following to promote products relevant
+                to their niches or expertise.
+              </p>
+            </div>
+            <div class="small-types">
+              <h2>Macro- 100k to 1M followers</h2>
+              <p>
+                Macro-influencers are influencers with followers ranging from
+                100,000 to 1,000,000. They have reasonable engagement rates and
+                a large audience, making them ideal for brand endorsement or
+                collaboration. Macro-influencers usually have prior experience
+                in their chosen niche.
+              </p>
+            </div>
+            <div class="small-types">
+              <h2>Mega- 1M+ followers</h2>
+              <p>
+                With more than a million followers, mega-influencers are highly
+                prominent on social media due to their celebrity status. They're
+                most active on social media channels where their target audience
+                is present, and with the help of a huge fan following, they
+                generate a ton of engagement.
+              </p>
+            </div>
+          </div>
+          <div class="im-types">
+            <img src="assets/img/The Arch Social.jpeg.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="brandclints-heading">
+        <h2>Our Clients !</h2>
+      </div>
+      <div class="main-slide">
+        <div class="sub-slide">
+          <img src="./assets/img/slidebrandimage1.jpeg" alt="" />
+          <img src="./assets/img/slidebrandimage2.jpeg" alt="" />
+          <img src="./assets/img/slidebrandimage3.jpeg" alt="" />
+          <img src="./assets/img/slidebrandimage4.jpeg" alt="" />
+          <img src="./assets/img/slidebrandimage5.jpeg" alt="" />
+          <img src="./assets/img/slidebrandimage6.jpeg" alt="" />
+          <img src="./assets/img/slidebrandimage7.jpeg" alt="" />
+        </div>
+      </div>
+
+      <div class="whole-process">
+        <div class="process-head"><h1>Our Process</h1></div>
+        <div class="process-full">
+          <div
+            class="box-process"
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-delay="300"
+            data-aos-duration="400"
+            data-aos-easing="linear"
+          >
+            <div class="in-process">
+              <i class='bx bxs-chevrons-right'></i>
+            </div>
+            <div class="in-process">
+              <h2>Grow Your Influence</h2>
+              <p>
+                Leverage audience insights, niche identification, and engagement
+                analytics to reach your true potential.
+              </p>
+              <span>01</span>
+            </div>
+          </div>
+
+          <div class="left-ajust">
+            <div
+              class="box-process"
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-delay="300"
+              data-aos-duration="400"
+              data-aos-easing="linear"
+            >
+              <div class="in-process">
+                <i class='bx bxs-chevrons-right'></i>
+              </div>
+              <div class="in-process">
+                <h2>Seamless Brand Collaborations</h2>
+                <p>
+                  Our intelligent matching system pairs you with brands that
+                  align with your values and audience. Simplify negotiations
+                  with transparent contracts and payment systems.
+                </p>
+                <span>02</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="box-process"
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-delay="300"
+            data-aos-duration="400"
+            data-aos-easing="linear"
+          >
+            <div class="in-process">
+              <i class='bx bxs-chevrons-right'></i>
+            </div>
+            <div class="in-process">
+              <h2>Maximize Revenue</h2>
+              <p>
+                From exclusive brand deals to campaign management, Wefluence
+                opens multiple revenue streams for influencers.
+              </p>
+              <span>03</span>
+            </div>
+          </div>
+
+          <div class="left-ajust">
+            <div
+              class="box-process"
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-delay="300"
+              data-aos-duration="400"
+              data-aos-easing="linear"
+            >
+              <div class="in-process">
+                <i class='bx bxs-chevrons-right'></i>
+              </div>
+              <div class="in-process">
+                <h2>Community and Learning</h2>
+                <p>
+                  Join a thriving community of creators, attend workshops, and
+                  network with industry leaders to sharpen your skills.
+                </p>
+                <span>04</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- search items -->
+      <div>
+        <div>
+          <div class="header-pointsearch-full">
+            <div class="header-pointsearch">
+            <h1>Your Influence. Their Story.</h1>
+            <p>
+              Wefluence is revolutionizing the influencer marketing landscape by
+              seamlessly connecting influencers and brands across Tamil Nadu. With
+              thousands of verified influencer profiles and a growing network of
+              brands, it offers endless opportunities for collaboration, growth,
+              and monetization.
+            </p><br>
+            <p>
+              Wefluence is transforming influencer marketing in Tamil Nadu by effortlessly linking influencers with brands. With a vast network of verified influencer profiles and an expanding list of brands, Wefluence creates limitless opportunities for collaborations, growth, and monetization, helping influencers and brands thrive in the digital ecosystem.
+            </p>
+          </div>
+        </div>
+         <div class="cta">
+        <h2>Join Now and Monetize Your Influence</h2>
+        <h4>
+          Turn your passion into profit by collaborating with top brands.
+          Connect with opportunities that align with your vision and grow your
+          influence in meaningful ways.
+        </h4>
+        <a href="Influencer-Indepth-Form.html" class="btn">Join the Network Now</a>
+      </div>
+          
+  <form id="filter-form">
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+       <label for="state">State:</label>
+
+<select id="state" name="state">
+  <option value="">Select State</option>
+
+  <optgroup label="South India">
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Puducherry">Puducherry</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+  </optgroup>
+
+  <optgroup label="North India">
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+  </optgroup>
+</select>
+
+    <label for="city">City:</label>
+    <select id="city" name="city" disabled>
+      <option value="">Select City</option>
+    </select>
+  </form>
+
+  <div id="loading">Loading...</div>
+  <div id="results-count"></div>
+
+  <div id="results-section">
+    <div id="modal-results" class="grid-container"></div>
+  </div>
+
+  <div id="pagination">
+    <button id="prevButton">Previous</button>
+    <button id="nextButton">Next</button>
+  </div>
+      </div>
+      <div class="cta">
+        <h2>Turn your passion into profit today.</h2>
+        <h4>
+          Turn your passion into profit by collaborating with top brands.
+          Connect with opportunities that align with your vision and grow your
+          influence in meaningful ways.
+        </h4>
+        <a href="Influencersignup.html" class="btn">Join Now</a>
+      </div>
+      <div class="faq-section">
+        <h1>Influencer FAQs</h1>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I start as an influencer on Wefluence?</h3>
+                    <i class="faq-icon fas fa-plus"></i>
+                </div>
+                <div class="faq-answer"><p>Sign up on the Wefluence platform and complete your influencer profile with details such as your niche, audience, and social media links.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I get brand deals as an influencer?</h3>
+                    <i class="faq-icon fas fa-plus"></i>
+                </div>
+                <div class="faq-answer"><p>Once your profile is approved, brands will view your profile and may reach out for collaborations based on your audience engagement and niche.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do I need to have a large following to collaborate with brands?</h3>
+                    <i class="faq-icon fas fa-plus"></i>
+                </div>
+                <div class="faq-answer"><p>Having a large following helps, but Wefluence values engagement and niche relevance, allowing smaller influencers to get brand deals too.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How does Wefluence help influencers monetize their content?</h3>
+                    <i class="faq-icon fas fa-plus"></i>
+                </div>
+                <div class="faq-answer"><p>Wefluence helps influencers by providing a platform to connect with brands, allowing for sponsored content, affiliate programs, and paid collaborations.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I improve my chances of getting brand collaborations?</h3>
+                    <i class="faq-icon fas fa-plus"></i>
+                </div>
+                <div class="faq-answer"><p>Engage regularly with your audience, maintain an active profile, and ensure your content is relevant to the brands you're targeting. A professional and authentic presence is key.</p></div>
+            </div>
+        </div>
+        </div>    
+    </main>
+
+    <footer class="footer">
+      <div class="container-footer ">
+          <div class="row">
+              <div class="footer-col">
+                  <h4>About</h4>
+                  <ul>
+                      <li><a href="#">About WeFluence</a></li>
+                      <li><a href="#">Our Vission & Mission</a></li>
+                      <li><a href="#">Success Stories</a></li>
+                      <li><a href="#">Careers</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Resource</h4>
+                  <ul>
+                      <li><a href="#">FAQ</a></li>
+                      <li><a href="#">Blog</a></li>
+                      <li><a href="#">Guides for Brand</a></li>
+                      <li><a href="#">Guides for Influencers</a></li>
+                      <li><a href="#">Community Resources</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Support</h4>
+                  <ul>
+                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="#">Report an Issue</a></li>
+                      <li><a href="#">Privacy Policy</a></li>
+                      <li><a href="#">Terms & Conditions</a></li>
+                      <li><a href="#">Partnership Queries</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Contact Us </h4>
+                  <ul>
+                      <li><a href="#">Phone: +91 XXX-XXX-XXXX</a></li>
+                      <li><a href="#">Email: contact@wefluence.com</a></li>
+                      <li><a href="#">Location: WeFluence Pvt. Ltd., South India.</a></li>
+                      <li><a href="#">Operating Hours: Mon - Fri, 9 AM to 6 PM</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>follow us</h4>
+                  <div class="social-links">
+                      <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                      <a href="#"><i class='bx bxl-twitter' ></i></a>
+                      <a href="#"><i class='bx bxl-instagram' ></i></a>
+                      <a href="#"><i class='bx bxl-linkedin-square' ></i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script>
+      var copy = document.querySelector(".sub-slide").cloneNode(true);
+      document.querySelector(".main-slide").appendChild(copy);
+    </script>
+    <script>
+      function showSidebar(){
+          const sidebar =document.querySelector('#sidebar')
+          sidebar.style.display='flex'
+      }
+      function hideSidebar(){
+          const sidebar =document.querySelector('#sidebar')
+          sidebar.style.display='none'
+      }
+      
+// JavaScript to toggle FAQ answer visibility and icon change
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+        // Close any open FAQ item
+        faqItems.forEach(faq => {
+            if (faq !== item) {
+                faq.classList.remove('open');
+                const icon = faq.querySelector('.faq-icon');
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        });
+
+        // Toggle the selected FAQ item
+        item.classList.toggle('open');
+        const icon = item.querySelector('.faq-icon');
+        icon.classList.toggle('fa-plus');
+        icon.classList.toggle('fa-minus');
+    });
+});
+
+  </script>
+  <script src="influencer_filter.js"></script>
+  
+    <script>
+      const slides = document.querySelectorAll(".slides img");
+      let slideIndex =0;
+      let intervalId = null;
+document.addEventListener("DOMContentLoaded",initializeSlider);
+
+      function initializeSlider(){
+        if(slides.length > 0){
+            slides[slideIndex].classList.add("displaySlide");
+            intervalId=setInterval(nextSlide,5000);
+        }
+
+      }
+      function showSlide(index){
+
+        if(index >= slides.length){
+            slideIndex = 0;
+        }else if(index < 0){
+            slideIndex=slides.length -1;
+        }
+        slides.forEach(slide =>{slide.classList.remove("displaySlide");});
+        slides[slideIndex].classList.add("displaySlide");
+      }
+      function prevSlide(){
+        clearInterval(intervalId);
+        slideIndex--;
+        showSlide(slideIndex);
+      }
+      function nextSlide(){
+        slideIndex++;
+        showSlide(slideIndex);
+      }
+    </script>
+    <script>
+      window.addEventListener("load", function() {
+        const image1 = localStorage.getItem("page3-image1");
+        const image2 = localStorage.getItem("page3-image2");
+        const image3 = localStorage.getItem("page3-image3");
+      
+        if (image1) {
+          document.getElementById("page3-image1").src = image1;
+        }
+        if (image2) {
+          document.getElementById("page3-image2").src = image2;
+        }
+        if (image3) {
+          document.getElementById("page3-image3").src = image3;
+        }
+      });
+      
+    </script>
+  </body>
+</html>

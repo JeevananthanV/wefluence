@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Form Sign-Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Brand Form Sign-Up</h2>
+      </div>
+      <form action="BrandSignup" method="post">
+        <div class="form-group">
+          <label for="brand-name">Brand Name:</label>
+          <input
+            type="text"
+            id="brand-name"
+            name="brandName"
+            class="form-input"
+            required
+            placeholder="Enter brand name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="contact-person">Contact Person Name:</label>
+          <input
+            type="text"
+            id="contact-person"
+            name="contactPerson"
+            class="form-input"
+            required
+            placeholder="Enter contact person name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="emailAddress"
+            class="form-input"
+            required
+            placeholder="Enter email address"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone-number">Phone Number:</label>
+          <input
+            type="tel"
+            id="phone-number"
+            name="phoneNumber"
+            class="form-input"
+            required
+            placeholder="Enter phone number"
+          />
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+
+    <div class="why-choose-us">
+      <h3>Why Choose Us?</h3>
+      <div class="points">
+        <div class="point">
+          <i class="bx bx-network-chart"></i>
+          <span><strong>Enhanced Visibility:</strong> Reach a wider audience through targeted campaigns.</span>
+        </div>
+        <div class="point">
+          <i class="bx bx-message-square-detail"></i>
+          <span><strong>Tailored Marketing Solutions:</strong> Customized strategies for your brand's growth.</span>
+        </div>
+        <div class="point">
+          <i class="bx bx-building-house"></i>
+          <span><strong>Partnership Opportunities:</strong> Collaborate with top influencers and partners.</span>
+        </div>
+        <div class="point">
+          <i class="bx bx-group"></i>
+          <span><strong>Expert Support:</strong> Dedicated assistance for seamless brand management.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

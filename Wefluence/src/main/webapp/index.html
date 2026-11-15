@@ -1,0 +1,458 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style/style.css">
+   
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <div class="main-header">
+            <div class="sub-header">
+                <div class="sub-head">
+                    <img src="./assets/img/MW letter logo design.png" alt="">
+                </div>
+                <div class="sub-head">
+                    <nav class="nav-bar">
+                        <ul id="sidebar">
+                            <li onclick=hideSidebar()><a href="#"><i class='bx bx-x' ></i></a></li>
+                            <li onclick="location.href='index.html'">HOME</li>
+                            <li onclick="location.href='AboutUs.html'">ABOUT US</li>
+                            <li><a href="#"></a>EXPLORE <i class='bx bx-chevron-down'></i>
+                                <ul class="dropdown">
+                                    <li onclick="location.href='branding.html'"><a >Iam Brand</a><i class='bx bx-chevron-right' ></i>
+
+                                    </li>
+                                    <li onclick="location.href='modeling.html'"><a href="modeling.html">Iam model</a> <i class='bx bx-chevron-right' ></i>
+
+
+                                    </li>
+                                    <li onclick="location.href='influencing.html'"><a href="influencing.html">Iam Influencer</a> <i class='bx bx-chevron-right' ></i>
+
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li onclick="location.href='contactus.html'"    >CONTACT US</li>
+                        </ul>
+                        <ul class="ul-navbar">
+                            <li  class="hideOnMobile"onclick="location.href='index.html'">HOME</li>
+                            <li class="hideOnMobile" onclick="location.href='AboutUs.html'">ABOUT US</li>
+                            <li class="hideOnMobile"><a href="#"></a>EXPLORE <i class='bx bx-chevron-down'></i>
+                                <ul class="dropdown">
+                                    <li onclick="location.href='branding.html'">Iam Brand
+                                        <div class="brand-menu">
+                                            <ul>
+                                                <li><a href="#">Campaign Management</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li onclick="location.href='modeling.html'">Iam model
+                                        <div class="brand-menu">
+                                            <ul>
+                                                <li><a href="#">Campaign Management</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li onclick="location.href='influencing.html'">Iam Influencer
+                                        <div class="brand-menu">
+                                            <ul>
+                                                <li><a href="#">Campaign Management</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                                <li><a href="#">Influencer Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li  class="hideOnMobile"onclick="location.href='contactus.html'"    >CONTACT US</li>
+                            <li class="menu-btn" onclick=showSidebar()><a href="#"><i class='bx bx-menu'></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="main-conthead">
+              <div class="cont-heard">
+                <h1>
+                    Welcome To Weofluence, <br>Let's <span class="auto-type"></span>
+                    <br>
+                    
+                </h1>
+                <p>
+                    Welcome to Wefluence, the premier platform connecting models, influencers, and brands.
+                     We empower you with cutting-edge tools, secure systems, and a vibrant community to turn 
+                     passion into success. Whether you're a brand seeking storytellers, a model elevating your career,
+                      or an influencer monetizing creativity, Wefluence is your trusted partner.
+                </p>
+               </div>
+            <div class="slider">
+                <button class="prev" onclick="prevSlide()">&#10094</button>
+                <div class="slides">
+                    <img class="slide" id="image1-display" src="./assets/img/female1.jpeg" alt="img1">
+                 
+                    <img class="slide" id="image2-display"src="./assets/img/female2.jpeg" alt="img2">
+                
+                    <img class="slide" id="image3-display"src="./assets/img/female3.jpeg" alt="img3 ">
+                </div>
+
+                <button class="next" onclick="nextSlide()" >&#10095</button>
+            </div>
+        </div>
+            <div class="sub-headerbtn">
+                
+                <a href="./branding.html"><button>Iam Brand</button></a>
+                <a href="./influencing.html"><button>Iam a Influencer</button></a>
+                <a href="./modeling.html"><button >Iam a Model</button></a>
+            </div>
+        </div>
+        <div class="main-vidscroll">
+            <div class="sub-vidscroll">
+                <img  src="./assets/img/slidebrandimage1.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage2.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage3.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage4.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage5.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage6.jpeg" alt="">
+                <img src="./assets/img/slidebrandimage7.jpeg" alt="">
+            </div>
+        </div>
+    </header>
+    <main>
+    <div class="container">
+        <!-- Call to Action Section -->
+         <div class="cta-main">
+             <div class="cta-section">
+                 <div class="cta-card">
+                     <img src="./assets/img/youtube.svg" alt="Brand Icon">
+                     <h2>BRAND</h2>
+                     <p>Showcase your talent with professional portfolios, connect with top brands directly, and grow your career with exclusive opportunities.</p>
+                     <button onclick="location.href='branding.html'"><a href="./branding.html">I'm a Brand</a></button>
+                 </div>
+                 <div class="cta-card">
+                     <img src="./assets/img/youtube.svg" alt="Influencer Icon">
+                     <h2>INFLUENCERS</h2>
+                     <p>Monetize your influence, collaborate with brands that align with your values, and unlock revenue opportunities with ease.</p>
+                     <button onclick="location.href='influencing.html'"><a href="./influencing.html">I'm an Influencer</a></button>
+                 </div>
+                 <div class="cta-card">
+                     <img src="./assets/img/youtube.svg" alt="Model Icon">
+                     <h2>MODELS</h2>
+                     <p>Access South India's largest pool of verified creators, simplify campaign management, and track ROI with real-time analytics.</p>
+                     <button onclick="location.href='modeling.html'"><a href="./modeling.html">I'm a Model</a></button>
+                 </div>
+            </div>
+
+        </div>
+        <div class="cta-content">
+            <h1>Let's Influence Together!</h1>
+            <p>
+                Whether you're a brand looking to connect with influencers or an influencer seeking collaboration, 
+                get in touch with us, the best Influencer Marketing agency today.
+            </p>
+            <div class="cta-contact">
+                <div>
+                    <p>Call Us</p>
+                    <h3>+918826483939</h3>
+                <div>
+                    <p>Email Us</p>
+                    <h3>hello@weofluence.com</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- process& why we choose -->
+ <div class="whole-process-head">
+    <h1>PROCESS FOR INFLUENCERS , BRANDS , and MODELS</h1>
+</div>
+<div class="whole-process">
+     <div class="whole-box" data-aos="fade-right"data-aos-offset="300"data-aos-delay="300"data-aos-duration="400"data-aos-easing="linear">
+        <div class="whole-box-cont">
+            <h2>Influencers</h2>
+            <p>Leverage audience insights, niche identification, and engagement analytics to reach your true potential.</p>
+            <p>Our intelligent matching system pairs you with brands that align with your values and audience. Simplify negotiations with transparent contracts and payment systems</p>
+            <p>From exclusive brand deals to campaign management, Wefluence opens multiple revenue streams for influencers.</p>
+            <p>Join a thriving community of creators, attend workshops, and network with industry leaders to sharpen your skills.</p>
+            <div class="process-but">
+                <a href="./influencing.html"><button>I'm Influencers</button></a>
+            </div>
+        </div>
+        <div class="whole-box-image">
+            <img src="./assets/img/img1.webp" alt="no img">
+        </div>
+    </div>
+    <div class="whole-box-2-adjust" style="overflow: hidden;">
+        <div class="whole-box-2" data-aos="fade-left"data-aos-offset="300"data-aos-delay="300"data-aos-duration="400"data-aos-easing="linear">
+            <div class="whole-box-image">
+                <img src="./assets/img/img1.webp" alt="no img">
+            </div>
+            <div class="whole-box-cont">
+                <h2>Brand</h2>
+                <p>Access influencers and models verified for their engagement, quality, and alignment with your brand values.</p>
+                <p>Simplify your campaign management with end-to-end solutions for content approvals, performance tracking, and ROI measurement.</p>
+                <p>Monitor engagement metrics, audience demographics, and campaign success in real time to maximize your impact.</p>
+                <p>Our platform ensures secure payments, fraud prevention, and content rights management for peace of mind.</p>
+                <div class="process-but">
+                    <a href="./branding.html"><button >I'm Brand</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="whole-box" data-aos="fade-right"data-aos-offset="300"data-aos-delay="300"data-aos-duration="400"data-aos-easing="linear">
+        <div class="whole-box-cont">
+            <h2>Models</h2>
+            <p>Vision-driven, innovative, and result-oriented.</p>
+            <p>Expertise in platform aesthetics, content strategy, and user experience.</p>
+            <p>Extensive connections with brands, creators, and industry leaders.</p>
+            <p>it’s a movement to redefine the creator economy and empower the next generation of talent.</p>
+            <div class="process-but">
+                <a href="./modeling.html"><button>I'm Models</button></a>
+            </div>
+        </div>
+        <div class="whole-box-image">
+            <img src="./assets/img/img1.webp" alt="no img">
+        </div>
+    </div>
+</div>
+<div class="typing-container">
+    <div class="content-box">
+        <h1 id="static-title"></h1>
+        <div id="content" class="content">
+            <p id="line1"></p>
+            <p id="line2"></p>
+            <p id="line3"></p>
+            <p id="line4"></p>
+        </div>
+    </div>
+    <div class="typin-image">
+        <img id="dynamic-image" src="" alt="Dynamic Content Image">
+    </div>
+    <div class="arrows">
+        <button class="arrow" id="prev-btn"><i class='bx bx-chevron-left'></i></button>
+        <button class="arrow" id="next-btn"><i class='bx bx-chevron-right'></i></button>
+    </div>
+</div>
+<div class="testimonials">
+    <div class="testimonial-container">
+        <h2 class="testimonials-title">What Our Community Says</h2>
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial-item">
+            <div class="testimonial-content">
+                <p class="testimonial-text">"WeInfluence helped me land my first big collaboration. The platform is so user-friendly and supportive!"</p>
+                <div class="testimonial-author">
+                    <img src="https://via.placeholder.com/80" alt="Client 1" class="client-img">
+                    <div class="client-details">
+                        <h4 class="client-name">Priya R.</h4>
+                        <p class="client-role">Influencer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-item">
+            <div class="testimonial-content">
+                <p class="testimonial-text">"As a model, I’ve connected with brands I could only dream of. Wefluence made it possible."</p>
+                <div class="testimonial-author">
+                    <img src="https://via.placeholder.com/80" alt="Client 2" class="client-img">
+                    <div class="client-details">
+                        <h4 class="client-name">Rahul K.</h4>
+                        <p class="client-role">Model</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-item">
+            <div class="testimonial-content">
+                <p class="testimonial-text">"Wefluence makes it easy for brands like ours to find authentic creators who truly represent our values."</p>
+                <div class="testimonial-author">
+                    <img src="https://via.placeholder.com/80" alt="Client 3" class="client-img">
+                    <div class="client-details">
+                        <h4 class="client-name">Avinash P.</h4>
+                        <p class="client-role">Brand Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-item">
+            <div class="testimonial-content">
+                <p class="testimonial-text">"Wefluence has allowed me to connect with top-tier brands, and I've seen a significant increase in engagement on my platform!"</p>
+                <div class="testimonial-author">
+                    <img src="https://via.placeholder.com/80" alt="Client 4" class="client-img">
+                    <div class="client-details">
+                        <h4 class="client-name">Ananya S.</h4>
+                        <p class="client-role">Influencer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Testimonial 2 -->
+         <div class="testimonial-item">
+            <div class="testimonial-content">
+                <p class="testimonial-text">"As a model, I've connected with brands I could only dream of. Wefluence made it possible."</p>
+                <div class="testimonial-author">
+                    <img src="https://via.placeholder.com/80" alt="Client 2" class="client-img">
+                    <div class="client-details">
+                        <h4 class="client-name">Rahul K.</h4>
+                        <p class="client-role">Model</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+<footer class="footer">
+    <div class="container-footer ">
+        <div class="row">
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">About WeFluence</a></li>
+                    <li><a href="#">Our Vission & Mission</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resource</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Guides for Brand</a></li>
+                    <li><a href="#">Guides for Influencers</a></li>
+                    <li><a href="#">Community Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Report an Issue</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Partnership Queries</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us </h4>
+                <ul>
+                    <li><a href="#">Phone: +91 XXX-XXX-XXXX</a></li>
+                    <li><a href="#">Email: contact@wefluence.com</a></li>
+                    <li><a href="#">Location: WeFluence Pvt. Ltd., South India.</a></li>
+                    <li><a href="#">Operating Hours: Mon - Fri, 9 AM to 6 PM</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                    <a href="#"><i class='bx bxl-twitter' ></i></a>
+                    <a href="#"><i class='bx bxl-instagram' ></i></a>
+                    <a href="#"><i class='bx bxl-linkedin-square' ></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed= new Typed(".auto-type",{
+            strings:["Connect.","Collaborate.","Create."],
+            typeSpeed:100,
+            backSpeed:50,
+            loop:true
+        });
+        var copy= document.querySelector(".sub-vidscroll").cloneNode(true);
+        document.querySelector(".main-vidscroll").appendChild(copy);
+ 
+        var copy= document.querySelector(".subhead-card").cloneNode(true);
+        document.querySelector(".hear-cards").appendChild(copy);
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+            function showSidebar(){
+                const sidebar =document.querySelector('#sidebar')
+                sidebar.style.display='flex'
+            }
+            function hideSidebar(){
+                const sidebar =document.querySelector('#sidebar')
+                sidebar.style.display='none'
+            }
+    </script>
+
+
+
+
+    <script>
+      const slides = document.querySelectorAll(".slides img");
+      let slideIndex =0;
+      let intervalId = null;
+document.addEventListener("DOMContentLoaded",initializeSlider);
+
+      function initializeSlider(){
+        if(slides.length > 0){
+            slides[slideIndex].classList.add("displaySlide");
+            intervalId=setInterval(nextSlide,5000);
+        }
+
+      }
+      function showSlide(index){
+
+        if(index >= slides.length){
+            slideIndex = 0;
+        }else if(index < 0){
+            slideIndex=slides.length -1;
+        }
+        slides.forEach(slide =>{slide.classList.remove("displaySlide");});
+        slides[slideIndex].classList.add("displaySlide");
+      }
+      function prevSlide(){
+        clearInterval(intervalId);
+        slideIndex--;
+        showSlide(slideIndex);
+      }
+      function nextSlide(){
+        slideIndex++;
+        showSlide(slideIndex);
+      }
+    </script>
+
+    <script src="doash.js"></script>
+    <script>
+        window.addEventListener("load", function() {
+            const image1 = localStorage.getItem("image1");
+            const image2 = localStorage.getItem("image2");
+            const image3 = localStorage.getItem("image3");
+            if (image1) {
+              document.getElementById("image1-display").src = image1;
+            }
+            if (image2) {
+              document.getElementById("image2-display").src = image2;
+            }
+            if (image3) {
+              document.getElementById("image3-display").src = image3;
+            }
+          });
+          
+    </script>
+</body>
+</html>
