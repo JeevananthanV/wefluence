@@ -27,7 +27,23 @@ The platform streamlines discovery, campaign creation, price negotiation, direct
 - **💬 Real-Time Messaging & Inquiries:** Secure communication channels for brand-creator negotiations with proposal attachments.
 - **📈 Analytics & ROI Dashboard:** Real-time metrics for impressions, engagement rates, click-through performance, and campaign ROI.
 - **🔐 Privacy & Verification:** Creator contact information and private data remain shielded until mutual collaboration terms are signed.
-- **🛡️ Admin & Moderation Tools:** Robust back-office management for approving creators, brands, verifying portfolios, and monitoring bookings.
+- **🛡️ Master Admin Command Center (`/admin`):** Full operational back-office for managing Creator approvals, Brand verifications, Model rosters, Campaign milestones, Escrow payouts, Inbound inquiries, KYC documents, and Platform take-rate configuration.
+
+---
+
+## ⚡ Admin Command Center Highlights (`/admin`)
+
+Access the dedicated admin portal at `http://localhost:3002/admin` or click the floating quick-access button on the homepage:
+
+- **📊 KPI Dashboard & Analytics:** Gross Booking Value ($184,520 GMV), Platform Revenue ($27,678 commission), 1,280 Verified Creators, 142 Active Collaborations, with interactive Chart.js growth breakdowns.
+- **🌟 Influencer Roster & Approvals:** Status toggles (Active, Pending Review, Suspended), Tier & Niche filters, live search, and Media Kit inspection modals.
+- **🏢 Brand & Corporate Oversight:** Verification badges, campaign audit counts, total corporate spend tracking, and representative contacts.
+- **💃 Fashion & Commercial Models:** Specs, height, day rates, and photo portfolio approvals.
+- **📢 Campaigns & Escrow Oversight:** Milestone tracking from Briefing to Verification, with one-click Escrow Payout release.
+- **📩 Inbound Leads & Enquiries:** Filter by category (Brand Enquiries, Influencer Leads, Model Applications) with direct status updates (Contacted, Converted).
+- **🛡️ KYC & Identity Verification:** Government ID review with AI identity match verification scores.
+- **💰 Financial Ledger:** 15% Platform take-rate ledger, gross transactions, escrow holds, and PDF invoice downloads.
+- **⚙️ Platform Settings:** Dynamic take-rate commission slider, escrow hold periods, and auto-approval rules.
 
 ---
 
@@ -106,3 +122,4 @@ wefluence/
 - GitHub: [@JeevananthanV](https://github.com/JeevananthanV)  
 - Portfolio: [https://jeevananthan.vercel.app](https://jeevananthan.vercel.app)  
 - Email: [jeevananthanjeeva170902@gmail.com](mailto:jeevananthanjeeva170902@gmail.com)
+

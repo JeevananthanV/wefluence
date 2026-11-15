@@ -25,18 +25,29 @@ const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   let pathname = decodeURIComponent(parsedUrl.pathname);
 
-  // Normalize path
+  // If the route is /admin or /admin/*, serve admin.html
+  if (pathname === '/admin' || pathname.startsWith('/admin/') || pathname === '/admin.html') {
+    const adminPath = path.join(__dirname, 'admin.html');
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-cache'
+    });
+    fs.createReadStream(adminPath).pipe(res);
+    return;
+  }
+
+  // Normalize path for general static serving
   let safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
   let filePath = path.join(__dirname, safePath);
 
-  // If path is root or a directory without index.html, serve root index.html
+  // If path is root or empty, serve root index.html
   if (pathname === '/' || pathname === '') {
     filePath = path.join(__dirname, 'index.html');
   }
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      // If it's a request for an asset or file extension, return 404
+      // If it's a request for an asset with an extension (e.g. .css, .js, .png) that doesn't exist, return 404
       if (path.extname(pathname)) {
         res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
         res.end('Not Found');
@@ -68,7 +79,8 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log(`====================================================`);
   console.log(`🚀 WeFluence Platform Server is running!`);
-  console.log(`🔗 Local URL:  http://localhost:${PORT}`);
-  console.log(`✨ Mode:       Production Preview / SPA Server`);
+  console.log(`🔗 Public Site: http://localhost:${PORT}`);
+  console.log(`⚡ Admin Panel: http://localhost:${PORT}/admin`);
+  console.log(`✨ Mode:        Production SPA + Admin Command Center`);
   console.log(`====================================================`);
 });

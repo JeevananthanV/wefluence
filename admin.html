@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeFluence — Master Admin Command Center</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              900: '#4c1d95',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- FontAwesome & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col custom-scrollbar">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Main Admin Wrapper -->
+  <div class="flex h-screen overflow-hidden">
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col border-r border-slate-800 flex-shrink-0 z-30 transition-all duration-300" id="sidebar">
+      
+      <!-- Brand Logo Header -->
+      <div class="h-16 flex items-center justify-between px-5 border-b border-slate-800 bg-slate-950/40">
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/25 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-bolt text-lg"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-white text-base tracking-tight flex items-center gap-1.5">
+              WeFluence
+              <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400 border border-purple-500/30">Admin</span>
+            </div>
+            <div class="text-[11px] text-slate-400">Control Center</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar py-4 px-3 space-y-1">
+        
+        <div class="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">Core Overview</div>
+        
+        <button onclick="switchTab('overview')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-white bg-purple-600 shadow-md shadow-purple-600/20" data-tab="overview">
+          <i class="fa-solid fa-chart-pie w-4 text-center"></i>
+          <span>Dashboard Overview</span>
+        </button>
+
+        <div class="pt-4 px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">User & Partner Directory</div>
+
+        <button onclick="switchTab('creators')" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="creators">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-wand-magic-sparkles w-4 text-center text-purple-400"></i>
+            <span>Influencers & Creators</span>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-semibold" id="badge-creators">8</span>
+        </button>
+
+        <button onclick="switchTab('brands')" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="brands">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-building-wheat w-4 text-center text-blue-400"></i>
+            <span>Brands & Agencies</span>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 font-semibold" id="badge-brands">6</span>
+        </button>
+
+        <button onclick="switchTab('models')" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="models">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-person-dress w-4 text-center text-pink-400"></i>
+            <span>Fashion Models</span>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 font-semibold" id="badge-models">5</span>
+        </button>
+
+        <div class="pt-4 px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">Operations & Deals</div>
+
+        <button onclick="switchTab('campaigns')" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="campaigns">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-bullhorn w-4 text-center text-amber-400"></i>
+            <span>Campaigns & Bookings</span>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold" id="badge-campaigns">6</span>
+        </button>
+
+        <button onclick="switchTab('leads')" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="leads">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-envelope-open-text w-4 text-center text-emerald-400"></i>
+            <span>Enquiries & Leads</span>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold" id="badge-leads">7</span>
+        </button>
+
+        <button onclick="switchTab('kyc')" class="nav-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="kyc">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-id-card-clip w-4 text-center text-cyan-400"></i>
+            <span>KYC Verifications</span>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 font-semibold animate-pulse" id="badge-kyc">3 Pending</span>
+        </button>
+
+        <div class="pt-4 px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">Treasury & Config</div>
+
+        <button onclick="switchTab('finance')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="finance">
+          <i class="fa-solid fa-wallet w-4 text-center text-emerald-400"></i>
+          <span>Finance & Escrow</span>
+        </button>
+
+        <button onclick="switchTab('settings')" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:text-white hover:bg-slate-800" data-tab="settings">
+          <i class="fa-solid fa-sliders w-4 text-center text-indigo-400"></i>
+          <span>Platform Settings</span>
+        </button>
+
+      </div>
+
+      <!-- Footer Quick Link back to Public App -->
+      <div class="p-3 border-t border-slate-800 bg-slate-950/60">
+        <a href="/" class="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            Return to Main App
+          </span>
+          <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300">port 3002</span>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- ==================== MAIN CONTENT AREA ==================== -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+
+      <!-- Top Header Bar -->
+      <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-20 flex-shrink-0">
+        
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+
+          <!-- Search Global Input -->
+          <div class="relative w-72 sm:w-96">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            <input 
+              type="text" 
+              id="global-search" 
+              placeholder="Search creators, brands, campaigns, leads..." 
+              oninput="handleGlobalSearch(this.value)"
+              class="w-full pl-10 pr-4 py-2 text-sm bg-slate-100 hover:bg-slate-100/80 focus:bg-white border border-transparent focus:border-purple-500 rounded-xl transition outline-none font-medium text-slate-700 placeholder-slate-400"
+            />
+          </div>
+
+          <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            System Live & Syncing
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <!-- Export Report Button -->
+          <button onclick="exportCurrentTableCSV()" class="hidden md:flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition shadow-sm">
+            <i class="fa-solid fa-cloud-arrow-down text-slate-500"></i>
+            Export CSV
+          </button>
+
+          <!-- Quick Create Action Button -->
+          <button onclick="openCreateModal()" class="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-purple-600 rounded-xl hover:bg-purple-700 transition shadow-md shadow-purple-600/20">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add New Entry</span>
+          </button>
+
+          <!-- Divider -->
+          <div class="h-6 w-px bg-slate-200"></div>
+
+          <!-- Admin Avatar & Profile Dropdown -->
+          <div class="flex items-center gap-3 pl-1">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-600 text-white font-bold text-sm flex items-center justify-center shadow-md">
+              AD
+            </div>
+            <div class="hidden xl:block text-left">
+              <div class="text-xs font-bold text-slate-800 leading-tight">Admin Master</div>
+              <div class="text-[11px] text-slate-400">admin@example.com</div>
+            </div>
+            <button onclick="resetDataToSeed()" title="Reset to Sample Data" class="p-2 text-slate-400 hover:text-purple-600 hover:bg-slate-100 rounded-lg transition">
+              <i class="fa-solid fa-rotate text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+      </header>
+
+      <!-- Sub-Tab Content Viewport -->
+      <main class="flex-1 overflow-y-auto custom-scrollbar p-6 bg-slate-50">
+
+        <!-- ==================== TAB 1: OVERVIEW DASHBOARD ==================== -->
+        <section id="tab-overview" class="tab-pane space-y-6">
+
+          <!-- Page Heading -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Platform Command Center</h1>
+              <p class="text-sm text-slate-500">Real-time collaboration metrics, transaction volume, and operational oversight.</p>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+              <i class="fa-regular fa-clock text-slate-400"></i>
+              Last synchronized: <span id="sync-time" class="font-bold text-slate-700">Just now</span>
+            </div>
+          </div>
+
+          <!-- KPI Metric Cards Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            
+            <!-- Metric 1: Total Platform GMV -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Gross Booking Value</span>
+                <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                  <i class="fa-solid fa-hand-holding-dollar text-lg"></i>
+                </div>
+              </div>
+              <div class="text-2xl font-black text-slate-900" id="stat-gmv">$184,520</div>
+              <div class="flex items-center gap-1.5 mt-2 text-xs font-semibold text-emerald-600">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+                <span>+24.8% vs last month</span>
+              </div>
+            </div>
+
+            <!-- Metric 2: Platform Commission -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Platform Revenue (15%)</span>
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <i class="fa-solid fa-piggy-bank text-lg"></i>
+                </div>
+              </div>
+              <div class="text-2xl font-black text-slate-900" id="stat-revenue">$27,678</div>
+              <div class="flex items-center gap-1.5 mt-2 text-xs font-semibold text-emerald-600">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+                <span>+18.2% fee collected</span>
+              </div>
+            </div>
+
+            <!-- Metric 3: Active Influencers & Creators -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Verified Creators</span>
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                  <i class="fa-solid fa-users text-lg"></i>
+                </div>
+              </div>
+              <div class="text-2xl font-black text-slate-900" id="stat-creators">1,280</div>
+              <div class="flex items-center gap-1.5 mt-2 text-xs font-semibold text-purple-600">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span id="stat-pending-creators">8 profiles awaiting review</span>
+              </div>
+            </div>
+
+            <!-- Metric 4: Brand Campaigns & Deals -->
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Active Collaborations</span>
+                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                  <i class="fa-solid fa-briefcase text-lg"></i>
+                </div>
+              </div>
+              <div class="text-2xl font-black text-slate-900" id="stat-campaigns">142</div>
+              <div class="flex items-center gap-1.5 mt-2 text-xs font-semibold text-amber-600">
+                <i class="fa-solid fa-lock"></i>
+                <span>$86,400 protected in escrow</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Charts Row -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Main Monthly Growth Bar/Line Chart -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-base">Booking Revenue & Commission Trends</h3>
+                  <p class="text-xs text-slate-400">Monthly GMV vs Net Platform Fees (2025 - 2026)</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="flex items-center gap-1.5 text-xs text-purple-600 font-semibold">
+                    <span class="w-3 h-3 rounded-sm bg-purple-600"></span> GMV ($)
+                  </span>
+                  <span class="flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                    <span class="w-3 h-3 rounded-sm bg-emerald-500"></span> Commission ($)
+                  </span>
+                </div>
+              </div>
+              <div class="h-64">
+                <canvas id="revenueChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Category Distribution Doughnut -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-base">Creator Niches</h3>
+                  <p class="text-xs text-slate-400">Creator breakdown across categories</p>
+                </div>
+                <i class="fa-solid fa-chart-donut text-slate-400"></i>
+              </div>
+              <div class="h-64 flex items-center justify-center">
+                <canvas id="categoryChart"></canvas>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Urgent Action Queue + Recent Activity -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- Urgent Queue -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500 animate-ping"></div>
+                  <h3 class="font-bold text-slate-900 text-base">Urgent Moderation Queue</h3>
+                </div>
+                <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">Requires Approval</span>
+              </div>
+
+              <div class="space-y-3" id="urgent-queue-list">
+                <!-- Dynamically Populated -->
+              </div>
+            </div>
+
+            <!-- Recent System Activity -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-slate-900 text-base">Platform Activity Feed</h3>
+                <span class="text-xs text-purple-600 font-semibold hover:underline cursor-pointer" onclick="switchTab('campaigns')">View All</span>
+              </div>
+
+              <div class="space-y-3" id="activity-feed-list">
+                <!-- Dynamically Populated -->
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 2: INFLUENCERS & CREATORS ==================== -->
+        <section id="tab-creators" class="tab-pane hidden space-y-6">
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Influencers & Content Creators</h1>
+              <p class="text-sm text-slate-500">Review creator profiles, verify social metrics, manage base rates, and enforce platform standards.</p>
+            </div>
+            <button onclick="openAddCreatorModal()" class="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-purple-600 rounded-xl hover:bg-purple-700 transition shadow">
+              <i class="fa-solid fa-plus"></i>
+              Add New Creator
+            </button>
+          </div>
+
+          <!-- Filter & Search Toolbar -->
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="relative w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input 
+                  type="text" 
+                  placeholder="Filter by name, handle, niche..." 
+                  oninput="filterCreators(this.value)"
+                  class="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-100 border border-slate-200 rounded-lg outline-none focus:border-purple-500 focus:bg-white"
+                />
+              </div>
+
+              <select onchange="filterCreatorsByStatus(this.value)" class="text-xs font-medium bg-slate-100 border border-slate-200 rounded-lg px-3 py-1.5 outline-none focus:border-purple-500">
+                <option value="all">All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Pending">Pending Review</option>
+                <option value="Suspended">Suspended</option>
+              </select>
+
+              <select onchange="filterCreatorsByNiche(this.value)" class="text-xs font-medium bg-slate-100 border border-slate-200 rounded-lg px-3 py-1.5 outline-none focus:border-purple-500">
+                <option value="all">All Niches</option>
+                <option value="Tech & Gadgets">Tech & Gadgets</option>
+                <option value="Fashion & Beauty">Fashion & Beauty</option>
+                <option value="Fitness & Health">Fitness & Health</option>
+                <option value="Lifestyle & Travel">Lifestyle & Travel</option>
+                <option value="Gaming & Esports">Gaming & Esports</option>
+              </select>
+            </div>
+
+            <div class="text-xs text-slate-500 font-medium">
+              Showing <span id="creators-count" class="font-bold text-slate-800">0</span> registered creators
+            </div>
+          </div>
+
+          <!-- Creators Table -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider">
+                    <th class="p-4">Creator Profile</th>
+                    <th class="p-4">Niche</th>
+                    <th class="p-4">Followers</th>
+                    <th class="p-4">Engagement</th>
+                    <th class="p-4">Base Rate</th>
+                    <th class="p-4">Status</th>
+                    <th class="p-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="creators-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 3: BRANDS & AGENCIES ==================== -->
+        <section id="tab-brands" class="tab-pane hidden space-y-6">
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Brands & Corporate Sponsors</h1>
+              <p class="text-sm text-slate-500">Manage brand accounts, verify company registration credentials, monitor budgets, and audit spending.</p>
+            </div>
+            <button onclick="openAddBrandModal()" class="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition shadow">
+              <i class="fa-solid fa-plus"></i>
+              Add New Brand
+            </button>
+          </div>
+
+          <!-- Brands Table -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider">
+                    <th class="p-4">Brand / Company</th>
+                    <th class="p-4">Industry</th>
+                    <th class="p-4">Representative</th>
+                    <th class="p-4">Active Campaigns</th>
+                    <th class="p-4">Total Spent</th>
+                    <th class="p-4">Verification</th>
+                    <th class="p-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="brands-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 4: FASHION & COMMERCIAL MODELS ==================== -->
+        <section id="tab-models" class="tab-pane hidden space-y-6">
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Fashion & Commercial Models</h1>
+              <p class="text-sm text-slate-500">Runway, editorial, and commercial models roster with portfolio verification and booking rates.</p>
+            </div>
+            <button onclick="openAddModelModal()" class="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-pink-600 rounded-xl hover:bg-pink-700 transition shadow">
+              <i class="fa-solid fa-plus"></i>
+              Add Model
+            </button>
+          </div>
+
+          <!-- Models Table -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider">
+                    <th class="p-4">Model Profile</th>
+                    <th class="p-4">Category</th>
+                    <th class="p-4">Height / Specs</th>
+                    <th class="p-4">Day Rate</th>
+                    <th class="p-4">Location</th>
+                    <th class="p-4">Status</th>
+                    <th class="p-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="models-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 5: CAMPAIGNS & ESCROW BOOKINGS ==================== -->
+        <section id="tab-campaigns" class="tab-pane hidden space-y-6">
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Campaigns & Escrow Bookings</h1>
+              <p class="text-sm text-slate-500">Live brand-creator contracts, milestone deliverables, escrow release, and dispute arbitration.</p>
+            </div>
+          </div>
+
+          <!-- Campaigns Table -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider">
+                    <th class="p-4">Campaign / Contract</th>
+                    <th class="p-4">Brand</th>
+                    <th class="p-4">Assigned Talent</th>
+                    <th class="p-4">Deliverables</th>
+                    <th class="p-4">Budget / Escrow</th>
+                    <th class="p-4">Milestone Status</th>
+                    <th class="p-4 text-right">Arbitration Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="campaigns-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 6: LEADS & ENQUIRIES ==================== -->
+        <section id="tab-leads" class="tab-pane hidden space-y-6">
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Enquiries & Inbound Leads</h1>
+              <p class="text-sm text-slate-500">Direct inquiries from the landing page and registration forms across Brands, Influencers, and Models.</p>
+            </div>
+          </div>
+
+          <!-- Leads Table -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider">
+                    <th class="p-4">Inquirer Name</th>
+                    <th class="p-4">Category</th>
+                    <th class="p-4">Contact Details</th>
+                    <th class="p-4">Inquiry Date</th>
+                    <th class="p-4">Message / Brief</th>
+                    <th class="p-4">Status</th>
+                    <th class="p-4 text-right">Lead Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 7: KYC VERIFICATIONS ==================== -->
+        <section id="tab-kyc" class="tab-pane hidden space-y-6">
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Identity & KYC Verification Desk</h1>
+              <p class="text-sm text-slate-500">Safeguard brand security and creator authenticity. Review government IDs and corporate documents.</p>
+            </div>
+          </div>
+
+          <!-- KYC Table -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider">
+                    <th class="p-4">Applicant</th>
+                    <th class="p-4">Account Type</th>
+                    <th class="p-4">Submitted Document</th>
+                    <th class="p-4">AI Match Score</th>
+                    <th class="p-4">Submission Date</th>
+                    <th class="p-4">Status</th>
+                    <th class="p-4 text-right">Verification Decision</th>
+                  </tr>
+                </thead>
+                <tbody id="kyc-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 8: FINANCE & REVENUE ==================== -->
+        <section id="tab-finance" class="tab-pane hidden space-y-6">
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Financial Ledger & Escrow Vault</h1>
+              <p class="text-sm text-slate-500">Real-time ledger of brand deposits, creator payouts, and net 15% platform take-rate revenue.</p>
+            </div>
+            <button onclick="exportCurrentTableCSV()" class="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition shadow-sm">
+              <i class="fa-solid fa-download"></i>
+              Export Financial Ledger
+            </button>
+          </div>
+
+          <!-- Financial Ledger Table -->
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-bold uppercase tracking-wider">
+                    <th class="p-4">Transaction ID</th>
+                    <th class="p-4">Payer (Brand)</th>
+                    <th class="p-4">Payee (Creator)</th>
+                    <th class="p-4">Gross Deal ($)</th>
+                    <th class="p-4">Platform Fee (15%)</th>
+                    <th class="p-4">Net Payout ($)</th>
+                    <th class="p-4">Status</th>
+                    <th class="p-4 text-right">Invoice</th>
+                  </tr>
+                </thead>
+                <tbody id="finance-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== TAB 9: SETTINGS ==================== -->
+        <section id="tab-settings" class="tab-pane hidden space-y-6 max-w-4xl">
+
+          <div>
+            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Platform Configuration & Rules</h1>
+            <p class="text-sm text-slate-500">Fine-tune monetization parameters, moderation thresholds, and platform-wide security protocols.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+            
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">Monetization & Commission</h3>
+            
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Standard Platform Take-Rate Commission</label>
+                <div class="flex items-center gap-4">
+                  <input type="range" id="setting-commission" min="5" max="30" value="15" oninput="document.getElementById('commission-val').innerText = this.value + '%'" class="w-64 accent-purple-600">
+                  <span id="commission-val" class="text-sm font-bold text-purple-600">15%</span>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Deducted automatically from gross brand escrow before disbursement to creators.</p>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Minimum Creator Payout Threshold</label>
+                <div class="w-48 relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                  <input type="number" id="setting-min-payout" value="50" class="w-full pl-7 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg outline-none focus:border-purple-500 font-semibold">
+                </div>
+              </div>
+            </div>
+
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 pt-2">Security & Verification Automations</h3>
+
+            <div class="space-y-4">
+              <label class="flex items-center justify-between cursor-pointer p-3 rounded-xl hover:bg-slate-50 border border-slate-100">
+                <div>
+                  <div class="text-xs font-bold text-slate-800">Auto-Approve Verified Instagram & YouTube Creators</div>
+                  <div class="text-[11px] text-slate-400">Creators with &gt;50K followers and verified identity skip manual moderation.</div>
+                </div>
+                <input type="checkbox" checked class="w-4 h-4 accent-purple-600 cursor-pointer">
+              </label>
+
+              <label class="flex items-center justify-between cursor-pointer p-3 rounded-xl hover:bg-slate-50 border border-slate-100">
+                <div>
+                  <div class="text-xs font-bold text-slate-800">Escrow Hold Period After Deliverable Upload</div>
+                  <div class="text-[11px] text-slate-400">Holds brand funds for 48 hours for review before releasing payment to creator.</div>
+                </div>
+                <input type="checkbox" checked class="w-4 h-4 accent-purple-600 cursor-pointer">
+              </label>
+
+              <label class="flex items-center justify-between cursor-pointer p-3 rounded-xl hover:bg-slate-50 border border-slate-100">
+                <div>
+                  <div class="text-xs font-bold text-slate-800">Maintenance Mode</div>
+                  <div class="text-[11px] text-slate-400">Block new campaign creation and display platform maintenance notice.</div>
+                </div>
+                <input type="checkbox" class="w-4 h-4 accent-purple-600 cursor-pointer">
+              </label>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex justify-end gap-3">
+              <button onclick="savePlatformSettings()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-md shadow-purple-600/20 transition">
+                Save Platform Configuration
+              </button>
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- ==================== MODAL: PROFILE & MEDIA KIT VIEW ==================== -->
+  <div id="modal-profile" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 relative animate-in fade-in zoom-in duration-150">
+      <button onclick="closeModal('modal-profile')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div id="modal-profile-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: ADD NEW USER / CREATOR ==================== -->
+  <div id="modal-add-entry" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 relative">
+      <button onclick="closeModal('modal-add-entry')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <h3 class="text-lg font-bold text-slate-900 mb-1" id="add-modal-title">Add Creator to Directory</h3>
+      <p class="text-xs text-slate-400 mb-4">Input details to register or verify talent directly from admin.</p>
+
+      <form id="form-add-entry" onsubmit="handleCreateEntry(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Full Name</label>
+          <input type="text" id="new-name" required class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:border-purple-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Handle / ID</label>
+            <input type="text" id="new-handle" placeholder="@username" required class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:border-purple-500">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Category / Niche</label>
+            <select id="new-category" class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:border-purple-500 bg-white">
+              <option value="Tech & Gadgets">Tech & Gadgets</option>
+              <option value="Fashion & Beauty">Fashion & Beauty</option>
+              <option value="Fitness & Health">Fitness & Health</option>
+              <option value="Lifestyle & Travel">Lifestyle & Travel</option>
+              <option value="Gaming & Esports">Gaming & Esports</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Followers / Audience</label>
+            <input type="text" id="new-followers" placeholder="e.g. 150K" required class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:border-purple-500">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Base Rate ($)</label>
+            <input type="number" id="new-rate" placeholder="500" required class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:border-purple-500">
+          </div>
+        </div>
+
+        <div class="pt-3 flex justify-end gap-2">
+          <button type="button" onclick="closeModal('modal-add-entry')" class="px-4 py-2 font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+          <button type="submit" class="px-4 py-2 font-bold text-white bg-purple-600 hover:bg-purple-700 rounded-lg shadow">Save & Approve</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC & STATE ENGINE ==================== -->
+  <script>
+    // Initial Seed Data
+    const SEED_DATA = {
+      creators: [
+        { id: 1, name: "Priya Sharma", handle: "@priyatech", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", niche: "Tech & Gadgets", followers: "245K", engagement: "5.2%", rate: 850, status: "Active", email: "priya@example.com", location: "Bangalore, India", bio: "Tech reviewer, consumer electronics enthusiast & smartphone teardown specialist." },
+        { id: 2, name: "Marcus Vance", handle: "@marcusfit", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150", niche: "Fitness & Health", followers: "420K", engagement: "6.8%", rate: 1200, status: "Active", email: "marcus@example.com", location: "Mumbai, India", bio: "Certified nutritionist, calisthenics coach & lifestyle transformer." },
+        { id: 3, name: "Aarav Patel", handle: "@aaravcreates", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150", niche: "Gaming & Esports", followers: "180K", engagement: "4.1%", rate: 650, status: "Pending", email: "aarav@example.com", location: "Delhi, India", bio: "Live streamer, PC build tutorials & gaming peripherals reviewer." },
+        { id: 4, name: "Sneha Reddy", handle: "@snehastyle", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150", niche: "Fashion & Beauty", followers: "510K", engagement: "7.4%", rate: 1800, status: "Active", email: "sneha@example.com", location: "Hyderabad, India", bio: "Sustainable fashion curator, luxury styling & runway highlights." },
+        { id: 5, name: "Vikram Das", handle: "@vikramtravels", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150", niche: "Lifestyle & Travel", followers: "95K", engagement: "3.9%", rate: 450, status: "Active", email: "vikram@example.com", location: "Kochi, India", bio: "Backpacker storytelling, drone cinematic vistas and hidden gems." },
+        { id: 6, name: "Tanvi Mehta", handle: "@tanvifits", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150", niche: "Fashion & Beauty", followers: "310K", engagement: "5.8%", rate: 950, status: "Pending", email: "tanvi@example.com", location: "Chennai, India", bio: "Ethnic bridal wear specialist & festive beauty hacks." },
+        { id: 7, name: "Devon Chen", handle: "@devondev", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150", niche: "Tech & Gadgets", followers: "125K", engagement: "4.4%", rate: 500, status: "Active", email: "devon@example.com", location: "Singapore", bio: "AI developer, SaaS tool comparisons and productivity systems." },
+        { id: 8, name: "Rohit Verma", handle: "@rohitvibe", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150", niche: "Gaming & Esports", followers: "85K", engagement: "3.2%", rate: 350, status: "Suspended", email: "rohit@example.com", location: "Pune, India", bio: "Battle royale tournament caster and highlight clips." }
+      ],
+      brands: [
+        { id: 1, name: "Nordic Apparel", logo: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=100", industry: "Apparel & Retail", rep: "Jessica Miller (Brand Lead)", campaigns: 4, spent: 34500, verified: true, website: "nordicapparel.com" },
+        { id: 2, name: "TechVolt Gadgets", logo: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=100", industry: "Consumer Electronics", rep: "David Cole (Growth Head)", campaigns: 6, spent: 58200, verified: true, website: "techvolt.io" },
+        { id: 3, name: "GlowUp Cosmetics", logo: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=100", industry: "Skincare & Beauty", rep: "Ananya Roy (Marketing VP)", campaigns: 3, spent: 22000, verified: true, website: "glowupbio.com" },
+        { id: 4, name: "HydraFit Nutrition", logo: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=100", industry: "Health & Fitness", rep: "Rohan Kapoor (CMO)", campaigns: 2, spent: 14000, verified: false, website: "hydrafit.store" },
+        { id: 5, name: "Apex Gaming Hardware", logo: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=100", industry: "Gaming Hardware", rep: "Eric Wang (Sponsorships)", campaigns: 5, spent: 41000, verified: true, website: "apexgear.gg" },
+        { id: 6, name: "Aura Home Living", logo: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=100", industry: "Interior & Decor", rep: "Maya Sen (Brand Strategist)", campaigns: 1, spent: 7500, verified: false, website: "aurahome.in" }
+      ],
+      models: [
+        { id: 1, name: "Natasha Romanova", photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150", category: "High Fashion / Runway", height: "5'10\" (178cm)", rate: 1400, location: "Mumbai / Global", status: "Active" },
+        { id: 2, name: "Kavya Krishnan", photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150", category: "Commercial Print", height: "5'7\" (170cm)", rate: 900, location: "Bangalore", status: "Active" },
+        { id: 3, name: "Zoya Akhtar", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150", category: "Editorial & Beauty", height: "5'8\" (173cm)", rate: 1100, location: "Delhi", status: "Pending" },
+        { id: 4, name: "Sameer Sheikh", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150", category: "Fitness & Athletic", height: "6'1\" (185cm)", rate: 1200, location: "Mumbai", status: "Active" },
+        { id: 5, name: "Elena Rostova", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150", category: "Bridal & Ethnic", height: "5'9\" (175cm)", rate: 1000, location: "Hyderabad", status: "Active" }
+      ],
+      campaigns: [
+        { id: "CMP-8821", title: "Autumn Outerwear Launch", brand: "Nordic Apparel", talent: "Sneha Reddy", deliverables: "1x IG Reel + 3x Stories", budget: 3200, milestone: "Content Approved", status: "Active", escrow: "Held in Escrow" },
+        { id: "CMP-8822", title: "Apex Nova Wireless Mouse", brand: "TechVolt Gadgets", talent: "Priya Sharma", deliverables: "1x Full Dedicated YouTube Review", budget: 2800, milestone: "In Review", status: "Active", escrow: "Held in Escrow" },
+        { id: "CMP-8823", title: "Glow Radiance Vitamin C Serum", brand: "GlowUp Cosmetics", talent: "Tanvi Mehta", deliverables: "2x TikToks + UGC Ad Rights", budget: 1900, milestone: "Published & Verified", status: "Completed", escrow: "Payout Released" },
+        { id: "CMP-8824", title: "Pre-Workout Nitro Launch", brand: "HydraFit Nutrition", talent: "Marcus Vance", deliverables: "4x Gym Workout Reels", budget: 4500, milestone: "Brief Accepted", status: "Active", escrow: "Held in Escrow" },
+        { id: "CMP-8825", title: "CyberStrike RGB Keyboard", brand: "Apex Gaming Hardware", talent: "Aarav Patel", deliverables: "Twitch Livestream Integration", budget: 1500, milestone: "Brief Accepted", status: "Active", escrow: "Held in Escrow" },
+        { id: "CMP-8826", title: "Spring Studio Fashion Catalog", brand: "Nordic Apparel", talent: "Natasha Romanova", deliverables: "Full-day Studio Photo Shoot", budget: 2200, milestone: "Completed", status: "Completed", escrow: "Payout Released" }
+      ],
+      leads: [
+        { id: 1, name: "Aditya Chopra", category: "Brand Enquiry", email: "aditya@zenithmedia.com", phone: "+91 98840 12345", date: "2026-11-15", message: "Looking for 10 micro-influencers for our organic snack brand launch in South India.", status: "New" },
+        { id: 2, name: "Meera Nair", category: "Influencer Lead", email: "meera.nair@creator.com", phone: "+91 97721 54321", date: "2026-11-14", message: "Applying for verified creator badge. 120k followers in Malayalam food & travel.", status: "Contacted" },
+        { id: 3, name: "Shalini Dixit", category: "Model Application", email: "shalini.dixit@model.com", phone: "+91 98110 99887", date: "2026-11-14", message: "Runway model with Lakme Fashion Week experience seeking brand tie-ups.", status: "Converted" },
+        { id: 4, name: "Zenith Footwear", category: "Brand Enquiry", email: "marketing@zenithshoes.in", phone: "+91 99001 22334", date: "2026-11-13", message: "Want to book fitness creators for marathon footwear promotion campaign.", status: "New" },
+        { id: 5, name: "Kunal Jha", category: "Influencer Lead", email: "kunal.gaming@gmail.com", phone: "+91 98221 77665", date: "2026-11-12", message: "Tech and BGMI gamer with 80k active subscribers seeking peripheral sponsorships.", status: "Contacted" },
+        { id: 6, name: "Rhea Sen", category: "Model Application", email: "rhea.sen@agency.com", phone: "+91 98301 44556", date: "2026-11-11", message: "Commercial print model available for saree and bridal jewelry photoshoots.", status: "Converted" },
+        { id: 7, name: "Urban Brew Coffee", category: "Brand Enquiry", email: "partners@urbanbrew.com", phone: "+91 98451 99001", date: "2026-11-10", message: "Interested in hiring lifestyle creators for our cold brew subscription box.", status: "New" }
+      ],
+      kyc: [
+        { id: 1, name: "Aarav Patel", type: "Influencer", doc: "Government Passport & PAN", score: "99% Match", date: "2026-11-15", status: "Pending" },
+        { id: 2, name: "HydraFit Nutrition", type: "Brand Entity", doc: "Certificate of Incorporation & GST", score: "96% Match", date: "2026-11-14", status: "Pending" },
+        { id: 3, name: "Zoya Akhtar", type: "Fashion Model", doc: "National Aadhaar & Agency Contract", score: "98% Match", date: "2026-11-13", status: "Pending" },
+        { id: 4, name: "Sneha Reddy", type: "Influencer", doc: "Government Passport", score: "100% Match", date: "2026-11-08", status: "Approved" },
+        { id: 5, name: "TechVolt Gadgets", type: "Brand Entity", doc: "GST & CIN Registration", score: "100% Match", date: "2026-11-05", status: "Approved" }
+      ],
+      finance: [
+        { id: "TXN-9901", payer: "Nordic Apparel", payee: "Sneha Reddy", gross: 3200, fee: 480, net: 2720, status: "Escrow Locked", date: "2026-11-15" },
+        { id: "TXN-9902", payer: "TechVolt Gadgets", payee: "Priya Sharma", gross: 2800, fee: 420, net: 2380, status: "Escrow Locked", date: "2026-11-14" },
+        { id: "TXN-9903", payer: "GlowUp Cosmetics", payee: "Tanvi Mehta", gross: 1900, fee: 285, net: 1615, status: "Disbursed", date: "2026-11-12" },
+        { id: "TXN-9904", payer: "Nordic Apparel", payee: "Natasha Romanova", gross: 2200, fee: 330, net: 1870, status: "Disbursed", date: "2026-11-10" },
+        { id: "TXN-9905", payer: "Apex Gaming", payee: "Aarav Patel", gross: 1500, fee: 225, net: 1275, status: "Escrow Locked", date: "2026-11-08" },
+        { id: "TXN-9906", payer: "HydraFit Nutrition", payee: "Marcus Vance", gross: 4500, fee: 675, net: 3825, status: "Escrow Locked", date: "2026-11-06" }
+      ]
+    };
+
+    // State initialization from localStorage or seed
+    let appState = JSON.parse(localStorage.getItem('wefluence_admin_state')) || SEED_DATA;
+
+    function saveState() {
+      localStorage.setItem('wefluence_admin_state', JSON.stringify(appState));
+      updateBadges();
+    }
+
+    function resetDataToSeed() {
+      if (confirm("Reset admin panel to factory seed data?")) {
+        appState = JSON.parse(JSON.stringify(SEED_DATA));
+        saveState();
+        renderAllTables();
+        showToast("Admin data restored to sample state!", "info");
+      }
+    }
+
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-purple-600', 'text-white', 'shadow-md', 'shadow-purple-600/20');
+        btn.classList.add('text-slate-300', 'hover:bg-slate-800');
+      });
+
+      const activePane = document.getElementById('tab-' + tabId);
+      if (activePane) activePane.classList.remove('hidden');
+
+      const activeBtn = document.querySelector(`.nav-btn[data-tab="${tabId}"]`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-800');
+        activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-md', 'shadow-purple-600/20');
+      }
+
+      // Update URL hash
+      window.location.hash = tabId;
+    }
+
+    // Toggle Sidebar on mobile
+    function toggleSidebar() {
+      const sb = document.getElementById('sidebar');
+      sb.classList.toggle('-translate-x-full');
+    }
+
+    // Toast Engine
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl border text-xs font-bold transition-all duration-300 transform translate-x-10 opacity-0 ${
+        type === 'success' ? 'bg-slate-900 text-white border-slate-800' :
+        type === 'error' ? 'bg-red-600 text-white border-red-700' :
+        'bg-purple-600 text-white border-purple-700'
+      }`;
+
+      const icon = type === 'success' ? 'fa-circle-check text-emerald-400' :
+                   type === 'error' ? 'fa-circle-exclamation text-white' :
+                   'fa-bolt text-amber-300';
+
+      toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${message}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-x-10', 'opacity-0');
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.add('translate-x-10', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // Update Counts & Badges
+    function updateBadges() {
+      document.getElementById('badge-creators').innerText = appState.creators.length;
+      document.getElementById('badge-brands').innerText = appState.brands.length;
+      document.getElementById('badge-models').innerText = appState.models.length;
+      document.getElementById('badge-campaigns').innerText = appState.campaigns.length;
+      document.getElementById('badge-leads').innerText = appState.leads.length;
+      
+      const pendingKYC = appState.kyc.filter(k => k.status === 'Pending').length;
+      document.getElementById('badge-kyc').innerText = `${pendingKYC} Pending`;
+
+      const pendingCreators = appState.creators.filter(c => c.status === 'Pending').length;
+      document.getElementById('stat-pending-creators').innerText = `${pendingCreators} profiles awaiting review`;
+
+      document.getElementById('stat-creators').innerText = (1280 + appState.creators.length - 8).toLocaleString();
+      document.getElementById('stat-campaigns').innerText = (142 + appState.campaigns.length - 6).toLocaleString();
+    }
+
+    // Render Overview Activity & Urgent Queue
+    function renderOverviewLists() {
+      // Urgent Queue
+      const queueContainer = document.getElementById('urgent-queue-list');
+      const pendingKYC = appState.kyc.filter(k => k.status === 'Pending');
+      const pendingCreators = appState.creators.filter(c => c.status === 'Pending');
+
+      let html = '';
+      pendingKYC.slice(0, 2).forEach(item => {
+        html += `
+          <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold text-xs">
+                KYC
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">${item.name} (${item.type})</div>
+                <div class="text-[11px] text-slate-400">${item.doc} • Match ${item.score}</div>
+              </div>
+            </div>
+            <button onclick="switchTab('kyc')" class="text-xs font-bold text-purple-600 hover:text-purple-800 bg-purple-50 px-3 py-1.5 rounded-lg transition">
+              Verify
+            </button>
+          </div>
+        `;
+      });
+
+      pendingCreators.slice(0, 2).forEach(c => {
+        html += `
+          <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center gap-3">
+              <img src="${c.avatar}" class="w-9 h-9 rounded-lg object-cover">
+              <div>
+                <div class="text-xs font-bold text-slate-900">${c.name} (${c.handle})</div>
+                <div class="text-[11px] text-slate-400">${c.niche} • ${c.followers} Followers</div>
+              </div>
+            </div>
+            <button onclick="approveCreator(${c.id})" class="text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg transition">
+              Approve
+            </button>
+          </div>
+        `;
+      });
+
+      queueContainer.innerHTML = html || '<div class="text-xs text-slate-400 py-3 text-center">No urgent moderation tasks pending.</div>';
+
+      // Activity Feed
+      const feedContainer = document.getElementById('activity-feed-list');
+      const sampleActivities = [
+        { icon: 'fa-shield-check text-emerald-500', title: 'Creator Verified', desc: 'Sneha Reddy completed passport KYC review', time: '12m ago' },
+        { icon: 'fa-money-bill-transfer text-blue-500', title: 'Escrow Funded', desc: 'Nordic Apparel deposited $3,200 for #CMP-8821', time: '45m ago' },
+        { icon: 'fa-user-plus text-purple-500', title: 'New Inbound Lead', desc: 'Aditya Chopra (Brand) inquired for South India campaign', time: '1h ago' },
+        { icon: 'fa-camera text-pink-500', title: 'Model Booked', desc: 'Natasha Romanova confirmed full-day studio shoot', time: '3h ago' }
+      ];
+
+      feedContainer.innerHTML = sampleActivities.map(act => `
+        <div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition border border-transparent hover:border-slate-100">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid ${act.icon} text-base w-6 text-center"></i>
+            <div>
+              <div class="text-xs font-bold text-slate-800">${act.title}</div>
+              <div class="text-[11px] text-slate-400">${act.desc}</div>
+            </div>
+          </div>
+          <span class="text-[10px] text-slate-400 font-medium">${act.time}</span>
+        </div>
+      `).join('');
+    }
+
+    // Render Creators Table
+    function renderCreatorsTable(list = appState.creators) {
+      const tbody = document.getElementById('creators-table-body');
+      document.getElementById('creators-count').innerText = list.length;
+      tbody.innerHTML = list.map(c => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-4">
+            <div class="flex items-center gap-3">
+              <img src="${c.avatar}" class="w-10 h-10 rounded-xl object-cover shadow-sm">
+              <div>
+                <div class="font-bold text-slate-900">${c.name}</div>
+                <div class="text-[11px] text-purple-600 font-medium">${c.handle}</div>
+              </div>
+            </div>
+          </td>
+          <td class="p-4">
+            <span class="px-2.5 py-1 rounded-md bg-purple-50 text-purple-700 text-[11px] font-semibold">${c.niche}</span>
+          </td>
+          <td class="p-4 font-bold text-slate-800">${c.followers}</td>
+          <td class="p-4 text-emerald-600 font-bold">${c.engagement}</td>
+          <td class="p-4 font-bold text-slate-900">$${c.rate} <span class="text-[10px] text-slate-400 font-normal">/post</span></td>
+          <td class="p-4">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+              c.status === 'Active' ? 'bg-emerald-100 text-emerald-800' :
+              c.status === 'Pending' ? 'bg-amber-100 text-amber-800' :
+              'bg-red-100 text-red-800'
+            }">
+              ${c.status}
+            </span>
+          </td>
+          <td class="p-4 text-right space-x-1">
+            <button onclick="viewCreatorProfile(${c.id})" class="px-2.5 py-1 text-slate-600 hover:text-purple-600 hover:bg-slate-100 rounded-lg transition" title="View Profile">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+            ${c.status === 'Pending' ? `
+              <button onclick="approveCreator(${c.id})" class="px-2.5 py-1 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="Approve">
+                <i class="fa-solid fa-check"></i>
+              </button>
+            ` : `
+              <button onclick="toggleCreatorStatus(${c.id})" class="px-2.5 py-1 ${c.status === 'Active' ? 'text-amber-600 hover:bg-amber-50' : 'text-emerald-600 hover:bg-emerald-50'} rounded-lg transition" title="Toggle Status">
+                <i class="fa-solid fa-power-off"></i>
+              </button>
+            `}
+            <button onclick="deleteCreator(${c.id})" class="px-2.5 py-1 text-red-500 hover:bg-red-50 rounded-lg transition" title="Delete">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render Brands Table
+    function renderBrandsTable() {
+      const tbody = document.getElementById('brands-table-body');
+      tbody.innerHTML = appState.brands.map(b => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-4">
+            <div class="flex items-center gap-3">
+              <img src="${b.logo}" class="w-10 h-10 rounded-xl object-cover shadow-sm">
+              <div>
+                <div class="font-bold text-slate-900">${b.name}</div>
+                <div class="text-[11px] text-blue-600 font-medium">${b.website}</div>
+              </div>
+            </div>
+          </td>
+          <td class="p-4">
+            <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 text-[11px] font-semibold">${b.industry}</span>
+          </td>
+          <td class="p-4 text-slate-700">${b.rep}</td>
+          <td class="p-4 font-bold text-slate-900">${b.campaigns} Active</td>
+          <td class="p-4 font-extrabold text-slate-900">$${b.spent.toLocaleString()}</td>
+          <td class="p-4">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+              b.verified ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+            }">
+              ${b.verified ? 'Verified Entity' : 'Pending Verification'}
+            </span>
+          </td>
+          <td class="p-4 text-right space-x-1">
+            <button onclick="toggleBrandVerification(${b.id})" class="px-2.5 py-1 text-blue-600 hover:bg-blue-50 rounded-lg transition" title="Toggle Verification">
+              <i class="fa-solid fa-shield-halved"></i>
+            </button>
+            <button onclick="deleteBrand(${b.id})" class="px-2.5 py-1 text-red-500 hover:bg-red-50 rounded-lg transition" title="Delete">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render Models Table
+    function renderModelsTable() {
+      const tbody = document.getElementById('models-table-body');
+      tbody.innerHTML = appState.models.map(m => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-4">
+            <div class="flex items-center gap-3">
+              <img src="${m.photo}" class="w-10 h-10 rounded-xl object-cover shadow-sm">
+              <div>
+                <div class="font-bold text-slate-900">${m.name}</div>
+                <div class="text-[11px] text-slate-400">${m.location}</div>
+              </div>
+            </div>
+          </td>
+          <td class="p-4">
+            <span class="px-2.5 py-1 rounded-md bg-pink-50 text-pink-700 text-[11px] font-semibold">${m.category}</span>
+          </td>
+          <td class="p-4 text-slate-700 font-medium">${m.height}</td>
+          <td class="p-4 font-bold text-slate-900">$${m.rate} <span class="text-[10px] text-slate-400 font-normal">/day</span></td>
+          <td class="p-4 text-slate-600">${m.location}</td>
+          <td class="p-4">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+              m.status === 'Active' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+            }">
+              ${m.status}
+            </span>
+          </td>
+          <td class="p-4 text-right space-x-1">
+            <button onclick="toggleModelStatus(${m.id})" class="px-2.5 py-1 text-pink-600 hover:bg-pink-50 rounded-lg transition" title="Toggle Active">
+              <i class="fa-solid fa-power-off"></i>
+            </button>
+            <button onclick="deleteModel(${m.id})" class="px-2.5 py-1 text-red-500 hover:bg-red-50 rounded-lg transition" title="Delete">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render Campaigns Table
+    function renderCampaignsTable() {
+      const tbody = document.getElementById('campaigns-table-body');
+      tbody.innerHTML = appState.campaigns.map(cmp => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-4">
+            <div class="font-bold text-slate-900">${cmp.title}</div>
+            <div class="text-[11px] text-slate-400 font-mono">${cmp.id}</div>
+          </td>
+          <td class="p-4 font-bold text-blue-600">${cmp.brand}</td>
+          <td class="p-4 font-medium text-slate-700">${cmp.talent}</td>
+          <td class="p-4 text-slate-600">${cmp.deliverables}</td>
+          <td class="p-4">
+            <div class="font-extrabold text-slate-900">$${cmp.budget.toLocaleString()}</div>
+            <div class="text-[10px] text-amber-600 font-semibold">${cmp.escrow}</div>
+          </td>
+          <td class="p-4">
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${
+              cmp.milestone === 'Published & Verified' || cmp.milestone === 'Completed' ? 'bg-emerald-100 text-emerald-800' :
+              cmp.milestone === 'Content Approved' ? 'bg-blue-100 text-blue-800' :
+              'bg-amber-100 text-amber-800'
+            }">
+              ${cmp.milestone}
+            </span>
+          </td>
+          <td class="p-4 text-right space-x-2">
+            ${cmp.escrow === 'Held in Escrow' ? `
+              <button onclick="releaseEscrowPayout('${cmp.id}')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition shadow-sm" title="Force Release Escrow">
+                Release Escrow
+              </button>
+            ` : `
+              <span class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> Disbursed</span>
+            `}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render Leads Table
+    function renderLeadsTable() {
+      const tbody = document.getElementById('leads-table-body');
+      tbody.innerHTML = appState.leads.map(lead => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-4 font-bold text-slate-900">${lead.name}</td>
+          <td class="p-4">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold ${
+              lead.category.includes('Brand') ? 'bg-blue-50 text-blue-700' :
+              lead.category.includes('Influencer') ? 'bg-purple-50 text-purple-700' :
+              'bg-pink-50 text-pink-700'
+            }">
+              ${lead.category}
+            </span>
+          </td>
+          <td class="p-4">
+            <div class="text-slate-800 font-medium">${lead.email}</div>
+            <div class="text-[11px] text-slate-400">${lead.phone}</div>
+          </td>
+          <td class="p-4 text-slate-500 font-mono text-[11px]">${lead.date}</td>
+          <td class="p-4 text-slate-600 max-w-xs truncate" title="${lead.message}">${lead.message}</td>
+          <td class="p-4">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+              lead.status === 'New' ? 'bg-blue-100 text-blue-800' :
+              lead.status === 'Contacted' ? 'bg-amber-100 text-amber-800' :
+              'bg-emerald-100 text-emerald-800'
+            }">
+              ${lead.status}
+            </span>
+          </td>
+          <td class="p-4 text-right space-x-1">
+            <button onclick="updateLeadStatus(${lead.id}, 'Contacted')" class="px-2.5 py-1 text-blue-600 hover:bg-blue-50 rounded-lg transition" title="Mark Contacted">
+              <i class="fa-solid fa-phone"></i>
+            </button>
+            <button onclick="updateLeadStatus(${lead.id}, 'Converted')" class="px-2.5 py-1 text-emerald-600 hover:bg-emerald-50 rounded-lg transition" title="Mark Converted">
+              <i class="fa-solid fa-user-check"></i>
+            </button>
+            <button onclick="deleteLead(${lead.id})" class="px-2.5 py-1 text-red-500 hover:bg-red-50 rounded-lg transition" title="Delete">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render KYC Table
+    function renderKYCTable() {
+      const tbody = document.getElementById('kyc-table-body');
+      tbody.innerHTML = appState.kyc.map(k => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-4 font-bold text-slate-900">${k.name}</td>
+          <td class="p-4 text-slate-600 font-medium">${k.type}</td>
+          <td class="p-4 text-slate-800 font-medium"><i class="fa-solid fa-file-shield text-slate-400 mr-1.5"></i>${k.doc}</td>
+          <td class="p-4 font-bold text-emerald-600">${k.score}</td>
+          <td class="p-4 text-slate-500 font-mono text-[11px]">${k.date}</td>
+          <td class="p-4">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+              k.status === 'Approved' ? 'bg-emerald-100 text-emerald-800' :
+              k.status === 'Pending' ? 'bg-amber-100 text-amber-800' :
+              'bg-red-100 text-red-800'
+            }">
+              ${k.status}
+            </span>
+          </td>
+          <td class="p-4 text-right space-x-2">
+            ${k.status === 'Pending' ? `
+              <button onclick="approveKYC(${k.id})" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition shadow-sm">
+                Approve
+              </button>
+              <button onclick="rejectKYC(${k.id})" class="px-3 py-1 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded-lg transition">
+                Reject
+              </button>
+            ` : `
+              <span class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> Verified</span>
+            `}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render Finance Table
+    function renderFinanceTable() {
+      const tbody = document.getElementById('finance-table-body');
+      tbody.innerHTML = appState.finance.map(tx => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-4 font-mono font-bold text-slate-900">${tx.id}</td>
+          <td class="p-4 font-bold text-blue-600">${tx.payer}</td>
+          <td class="p-4 font-medium text-slate-700">${tx.payee}</td>
+          <td class="p-4 font-extrabold text-slate-900">$${tx.gross.toLocaleString()}</td>
+          <td class="p-4 font-bold text-purple-600">+$${tx.fee.toLocaleString()}</td>
+          <td class="p-4 font-bold text-emerald-700">$${tx.net.toLocaleString()}</td>
+          <td class="p-4">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
+              tx.status === 'Disbursed' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+            }">
+              ${tx.status}
+            </span>
+          </td>
+          <td class="p-4 text-right">
+            <button onclick="showToast('Invoice for ${tx.id} downloaded successfully!', 'info')" class="text-purple-600 hover:text-purple-800 font-semibold">
+              <i class="fa-solid fa-file-invoice-dollar"></i> PDF
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderAllTables() {
+      updateBadges();
+      renderOverviewLists();
+      renderCreatorsTable();
+      renderBrandsTable();
+      renderModelsTable();
+      renderCampaignsTable();
+      renderLeadsTable();
+      renderKYCTable();
+      renderFinanceTable();
+    }
+
+    // Actions & Handlers
+    function approveCreator(id) {
+      const c = appState.creators.find(x => x.id === id);
+      if (c) {
+        c.status = 'Active';
+        saveState();
+        renderAllTables();
+        showToast(`Creator ${c.name} has been approved and activated!`);
+      }
+    }
+
+    function toggleCreatorStatus(id) {
+      const c = appState.creators.find(x => x.id === id);
+      if (c) {
+        c.status = c.status === 'Active' ? 'Suspended' : 'Active';
+        saveState();
+        renderAllTables();
+        showToast(`Creator ${c.name} status updated to ${c.status}.`, 'info');
+      }
+    }
+
+    function deleteCreator(id) {
+      if (confirm("Are you sure you want to remove this creator?")) {
+        appState.creators = appState.creators.filter(c => c.id !== id);
+        saveState();
+        renderAllTables();
+        showToast("Creator removed from directory.", "error");
+      }
+    }
+
+    function viewCreatorProfile(id) {
+      const c = appState.creators.find(x => x.id === id);
+      if (!c) return;
+
+      const content = document.getElementById('modal-profile-content');
+      content.innerHTML = `
+        <div class="text-center pb-4 border-b border-slate-100">
+          <img src="${c.avatar}" class="w-20 h-20 rounded-2xl mx-auto object-cover shadow-md mb-3">
+          <h3 class="text-lg font-bold text-slate-900">${c.name}</h3>
+          <p class="text-xs text-purple-600 font-semibold">${c.handle} • ${c.location}</p>
+          <span class="inline-block mt-2 px-3 py-1 rounded-full text-xs font-bold ${
+            c.status === 'Active' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+          }">${c.status}</span>
+        </div>
+        <div class="py-4 space-y-3 text-xs">
+          <p class="text-slate-600 leading-relaxed italic">"${c.bio}"</p>
+          <div class="grid grid-cols-3 gap-2 text-center pt-2">
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <div class="font-extrabold text-slate-900 text-sm">${c.followers}</div>
+              <div class="text-[10px] text-slate-400 uppercase font-semibold">Followers</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <div class="font-extrabold text-emerald-600 text-sm">${c.engagement}</div>
+              <div class="text-[10px] text-slate-400 uppercase font-semibold">Avg. Reach</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <div class="font-extrabold text-purple-600 text-sm">$${c.rate}</div>
+              <div class="text-[10px] text-slate-400 uppercase font-semibold">Base Rate</div>
+            </div>
+          </div>
+          <div class="pt-2 text-[11px] text-slate-500">
+            <div><strong>Email:</strong> ${c.email}</div>
+            <div><strong>Specialization:</strong> ${c.niche}</div>
+          </div>
+        </div>
+        <div class="pt-3 border-t border-slate-100 flex justify-end gap-2">
+          <button onclick="closeModal('modal-profile')" class="px-4 py-2 font-semibold text-slate-600 hover:bg-slate-100 rounded-lg text-xs">Close</button>
+        </div>
+      `;
+      document.getElementById('modal-profile').classList.remove('hidden');
+    }
+
+    function toggleBrandVerification(id) {
+      const b = appState.brands.find(x => x.id === id);
+      if (b) {
+        b.verified = !b.verified;
+        saveState();
+        renderAllTables();
+        showToast(`Brand ${b.name} verification status updated to ${b.verified ? 'Verified' : 'Unverified'}.`, 'info');
+      }
+    }
+
+    function deleteBrand(id) {
+      if (confirm("Remove brand from directory?")) {
+        appState.brands = appState.brands.filter(b => b.id !== id);
+        saveState();
+        renderAllTables();
+        showToast("Brand removed.", "error");
+      }
+    }
+
+    function toggleModelStatus(id) {
+      const m = appState.models.find(x => x.id === id);
+      if (m) {
+        m.status = m.status === 'Active' ? 'Inactive' : 'Active';
+        saveState();
+        renderAllTables();
+        showToast(`Model ${m.name} status updated to ${m.status}.`, 'info');
+      }
+    }
+
+    function deleteModel(id) {
+      if (confirm("Remove model profile?")) {
+        appState.models = appState.models.filter(m => m.id !== id);
+        saveState();
+        renderAllTables();
+        showToast("Model profile removed.", "error");
+      }
+    }
+
+    function releaseEscrowPayout(cmpId) {
+      const cmp = appState.campaigns.find(c => c.id === cmpId);
+      if (cmp) {
+        cmp.escrow = 'Payout Released';
+        cmp.milestone = 'Completed';
+        
+        // Update finance
+        const tx = appState.finance.find(t => t.payer === cmp.brand && t.payee === cmp.talent);
+        if (tx) tx.status = 'Disbursed';
+
+        saveState();
+        renderAllTables();
+        showToast(`Escrow payout of $${cmp.budget.toLocaleString()} released to ${cmp.talent}!`);
+      }
+    }
+
+    function updateLeadStatus(id, newStatus) {
+      const lead = appState.leads.find(l => l.id === id);
+      if (lead) {
+        lead.status = newStatus;
+        saveState();
+        renderAllTables();
+        showToast(`Lead ${lead.name} marked as ${newStatus}.`);
+      }
+    }
+
+    function deleteLead(id) {
+      if (confirm("Delete this lead?")) {
+        appState.leads = appState.leads.filter(l => l.id !== id);
+        saveState();
+        renderAllTables();
+        showToast("Lead deleted.", "error");
+      }
+    }
+
+    function approveKYC(id) {
+      const k = appState.kyc.find(x => x.id === id);
+      if (k) {
+        k.status = 'Approved';
+        saveState();
+        renderAllTables();
+        showToast(`Identity verification approved for ${k.name}!`);
+      }
+    }
+
+    function rejectKYC(id) {
+      const k = appState.kyc.find(x => x.id === id);
+      if (k) {
+        k.status = 'Rejected';
+        saveState();
+        renderAllTables();
+        showToast(`KYC rejected for ${k.name}. Notification sent.`, 'error');
+      }
+    }
+
+    function savePlatformSettings() {
+      const commission = document.getElementById('setting-commission').value;
+      const minPayout = document.getElementById('setting-min-payout').value;
+      showToast(`Platform settings updated: Take-Rate ${commission}%, Min Payout $${minPayout}!`);
+    }
+
+    // Modal Control
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+
+    function openCreateModal() {
+      document.getElementById('modal-add-entry').classList.remove('hidden');
+    }
+
+    function openAddCreatorModal() {
+      document.getElementById('modal-add-entry').classList.remove('hidden');
+    }
+
+    function handleCreateEntry(e) {
+      e.preventDefault();
+      const name = document.getElementById('new-name').value;
+      const handle = document.getElementById('new-handle').value;
+      const niche = document.getElementById('new-category').value;
+      const followers = document.getElementById('new-followers').value;
+      const rate = parseInt(document.getElementById('new-rate').value) || 500;
+
+      const newCreator = {
+        id: Date.now(),
+        name,
+        handle: handle.startsWith('@') ? handle : '@' + handle,
+        avatar: `https://picsum.photos/seed/${Date.now()}/200`,
+        niche,
+        followers,
+        engagement: "4.5%",
+        rate,
+        status: "Active",
+        email: `${handle.replace('@', '')}@example.com`,
+        location: "India",
+        bio: `Professional content creator in ${niche}.`
+      };
+
+      appState.creators.unshift(newCreator);
+      saveState();
+      renderAllTables();
+      closeModal('modal-add-entry');
+      showToast(`Creator ${name} added & verified successfully!`);
+      document.getElementById('form-add-entry').reset();
+    }
+
+    // Filters
+    function filterCreators(query) {
+      const q = query.toLowerCase();
+      const filtered = appState.creators.filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.handle.toLowerCase().includes(q) || 
+        c.niche.toLowerCase().includes(q)
+      );
+      renderCreatorsTable(filtered);
+    }
+
+    function filterCreatorsByStatus(status) {
+      if (status === 'all') {
+        renderCreatorsTable(appState.creators);
+      } else {
+        renderCreatorsTable(appState.creators.filter(c => c.status === status));
+      }
+    }
+
+    function filterCreatorsByNiche(niche) {
+      if (niche === 'all') {
+        renderCreatorsTable(appState.creators);
+      } else {
+        renderCreatorsTable(appState.creators.filter(c => c.niche === niche));
+      }
+    }
+
+    // Global Search across tabs
+    function handleGlobalSearch(query) {
+      if (!query.trim()) return;
+      const q = query.toLowerCase();
+      // Search creators
+      const matchCreator = appState.creators.find(c => c.name.toLowerCase().includes(q) || c.handle.toLowerCase().includes(q));
+      if (matchCreator) {
+        switchTab('creators');
+        filterCreators(query);
+        return;
+      }
+      // Search brands
+      const matchBrand = appState.brands.find(b => b.name.toLowerCase().includes(q));
+      if (matchBrand) {
+        switchTab('brands');
+        return;
+      }
+      // Search campaigns
+      const matchCmp = appState.campaigns.find(c => c.title.toLowerCase().includes(q) || c.brand.toLowerCase().includes(q));
+      if (matchCmp) {
+        switchTab('campaigns');
+        return;
+      }
+    }
+
+    // Export to CSV
+    function exportCurrentTableCSV() {
+      let csv = "ID,Name,Category,Rate,Status\n";
+      appState.creators.forEach(c => {
+        csv += `${c.id},"${c.name}","${c.niche}",${c.rate},"${c.status}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `wefluence_report_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+      showToast("CSV report generated and downloaded!", "info");
+    }
+
+    // Initialize Charts
+    function initCharts() {
+      // Revenue Chart
+      const revCtx = document.getElementById('revenueChart').getContext('2d');
+      new Chart(revCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [
+            {
+              label: 'Gross Booking Volume ($)',
+              data: [14200, 18500, 24000, 29800, 36500, 42000, 48500],
+              backgroundColor: '#7c3aed',
+              borderRadius: 8
+            },
+            {
+              label: 'Net Platform Commission ($)',
+              data: [2130, 2775, 3600, 4470, 5475, 6300, 7275],
+              backgroundColor: '#10b981',
+              borderRadius: 8
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } },
+            x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+          }
+        }
+      });
+
+      // Category Doughnut Chart
+      const catCtx = document.getElementById('categoryChart').getContext('2d');
+      new Chart(catCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Tech', 'Fashion', 'Fitness', 'Lifestyle', 'Gaming'],
+          datasets: [{
+            data: [32, 28, 18, 14, 8],
+            backgroundColor: ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981', '#f59e0b'],
+            borderWidth: 2,
+            borderColor: '#ffffff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 10 } }
+            }
+          },
+          cutout: '72%'
+        }
+      });
+    }
+
+    // Boot
+    window.addEventListener('DOMContentLoaded', () => {
+      // Handle Hash tab on load
+      const hash = window.location.hash.replace('#', '') || 'overview';
+      switchTab(hash);
+      renderAllTables();
+      initCharts();
+    });
+  </script>
+
+</body>
+</html>
