@@ -36,6 +36,22 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // If the route is /webapp or /webapp/*, serve from src/main/webapp
+  if (pathname === '/webapp' || pathname.startsWith('/webapp/')) {
+    let sub = pathname.replace(/^\/webapp\/?/, '');
+    if (!sub || sub === '') sub = 'index.html';
+    let webappFile = path.join(__dirname, 'src', 'main', 'webapp', sub);
+    if (fs.existsSync(webappFile) && fs.statSync(webappFile).isFile()) {
+      const ext = path.extname(webappFile).toLowerCase();
+      res.writeHead(200, {
+        'Content-Type': MIME_TYPES[ext] || 'application/octet-stream',
+        'Cache-Control': 'no-cache'
+      });
+      fs.createReadStream(webappFile).pipe(res);
+      return;
+    }
+  }
+
   // Normalize path for general static serving
   let safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
   let filePath = path.join(__dirname, safePath);
@@ -79,8 +95,8 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log(`====================================================`);
   console.log(`🚀 WeFluence Platform Server is running!`);
-  console.log(`🔗 Public Site: http://localhost:${PORT}`);
-  console.log(`⚡ Admin Panel: http://localhost:${PORT}/admin`);
-  console.log(`✨ Mode:        Production SPA + Admin Command Center`);
+  console.log(`🔗 Public Site:    http://localhost:${PORT}`);
+  console.log(`⚡ Admin Panel:    http://localhost:${PORT}/admin`);
+  console.log(`🌐 Classic WebApp: http://localhost:${PORT}/webapp/`);
   console.log(`====================================================`);
 });
