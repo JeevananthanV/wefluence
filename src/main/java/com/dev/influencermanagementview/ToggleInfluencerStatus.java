@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +44,7 @@ public class ToggleInfluencerStatus extends HttpServlet {
                 stmt = conn.prepareStatement(statusSQL);
                 stmt.setString(1, influencerId);
 
-                var rs = stmt.executeQuery();
+                ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
                     response.getWriter().write(rs.getString("active_status"));
                 }
